@@ -1,0 +1,10 @@
+{
+  "name" : "apealive",
+  "version": "0.1",
+  "dependencies" : {
+    "fontawesome": "latest"
+ },
+  "install" : {
+    "path" : "static/"
+  }
+}
