@@ -1,39 +1,22 @@
 +++
 date = "2015-10-05T10:28:19+02:00"
 draft = true
-title = "about"
-
+title = "Who is APe?"
+tags = ['profile']
+disable = ['comments','share']
 +++
 
-# About
-## About 2
+*<a href="https://goo.gl/photos/e56EUzqnLjJUJxHq5" target="_blank">APe</a> je maskot naší rodiny. Dobře profláknutý mezi našimi kamarády pro své kousky. Občas ho stratíme, takže docela dost cestuje...*
 
-aaa
+<!--[Adriana]({{< ref "about_adriana.md" >}})
+-->
+My, Adriana a [Petr]({{< ref "about_petr.md" >}}), bydlíme v Brandýse nad Labem - Staré Boleslavi spolu s Mikulášem (2012) a Štěpánem (2014).
 
-bbb
+Rádi naplňujeme volný čas sportem, cestami za zážitky , dobrým kafem, vínem, italskou pizzou a dětmi, dětmi, dětmi. V roce 2009, na začátku ekonomické krize jsme si vzali rok pracovního volna a odjeli jsme cestovat na Nový Zaeland, Austrálii, Samou a Cook Islands. V poslední době jsme se obrátili na Paleo a dobrou kondici. Chlebem Vás tedy nepohostíme, to už raději otevřeme láhev dobrého vína.
 
-ccc
-* a
-* b
+Tyhle stránky jsme tvoříme jako deník pro nás a naše děti. *(aneb na iCloud není vše)*
 
-cccc
-
-* adfsf
-* sdfsdf
-
-
-```
-#!/bin/bash
-
-echo "hello"
-```
-
-ksdjfksjdfksjdf:
-
-    #!/bin/bash
-
-    echo "hello"
+APe
 
 
 
-### About 3

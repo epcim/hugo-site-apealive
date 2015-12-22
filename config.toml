@@ -1,3 +1,41 @@
-baseurl = "http://replace-this-with-your-hugo-site.com/"
+baseurl      = "https://blog.apealive.net/"
+title        = "make me: APe"
 languageCode = "en-us"
-title = "My New Hugo Site"
+
+theme           = "hugo-minimalist-theme"
+disqusShortname = "apealive"
+paginate        = 10
+canonifyurls    = true
+
+
+
+[params]
+    header_title     = "make me : APe"
+    site_author      = "Petr Michalec"
+    site_description = "APe's blog ~ #family, #tech, #photography, #DevOps, #Cloud, #Chef, #RC planes"
+    location         = "Brandys nad Labem - Stara Boleslav"
+
+    copyright        = "(C) APe, Powered by [Hugo](http://gohugo.io)."
+    google_analytics = ""
+
+    # https://mudcu.be/bg/
+    header_background      = "img/ZenBG.png"
+    avatar                 = "img/profile-image.png"
+
+
+
+[social]
+    # Add your social network accounts to the profile section on the left
+    # by entering your username. The links to your account will be
+    # create automatically.
+    twitter   = "epcim"
+    twitter2  = "apealive_net"
+    facebook  = "petr.michalec"
+    linkedin  = ""
+    behance   = ""
+    dribbble  = ""
+    instagram = ""
+    github    = "epcim"
+    gplus     = "PetrMichalec-Prague"
+
+

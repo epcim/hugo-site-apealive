@@ -1,0 +1,41 @@
+
++++
+slug = "exiftool-par-triku-na-fotky"
+title = "Exiftool - pár triků na fotky"
+date = "2009-04-10T11:53:44"
+tags = ["photography","exif","howto","tools"]
+disable = ['comments']
++++
+
+
+ <p>&nbsp;</p>
+<p>Ahoj, dnes prakticky.</p>
+<p>V&scaron;ichni fot&iacute;me. M&aacute;m v ruk&aacute;vu p&aacute;r triků pro manipulaci s exif informac&iacute; uloženou ve fotografii. Při zpracov&aacute;n&iacute; fotek z Thajska jsem měl z&aacute;běry z cca pěti fotoapar&aacute;tů. Někteř&iacute; autoři měnili čas fotoapar&aacute;tu během přejezdů čaosov&yacute;ch z&oacute;n, jin&iacute; ne. Bylo třeba hromadně opravit čas ve v&scaron;ech fotk&aacute;ch a pokud možno dos&aacute;hnout jednotn&eacute;ho řazen&iacute; fotek v adres&aacute;ři pro př&iacute;jemn&eacute; proch&aacute;zen&iacute;.</p>
+<p>Potřeboval jsem tedy co uměl modifikovat v exif informaci fotografie datum a čas vytvořen&iacute;. N&aacute;sledně pak použ&iacute;t opraven&eacute;ho data a času pro změnu jm&eacute;na fotky do n&aacute;zvu např: <em>YYYYMMDD_&lt;puvodni nazev&gt;.jpg</em> .</p>
+<p><a href="http://www.sno.phy.queensu.ca/%7Ephil/exiftool/index.html" target="_blank">Exiftool - http://www.sno.phy.queensu.ca/~phil/exiftool/index.html</a> &nbsp;  - je n&aacute;stroj pro manipulaci s exif informac&iacute;. Um&iacute; toho, ale mnohem v&iacute;ce.</p>
+<p>Prohl&eacute;dnout exif&nbsp; informaci um&iacute; kdejak&yacute; prohl&iacute;žeč. Pouč&iacute;t j&iacute; hromadně pro v&iacute;ce fotek už zase tak každ&yacute; neum&iacute; a hromadn&eacute; přejmenov&aacute;n&iacute; podle exif už opravdu ne. Vezmu to hodně stručně pokročil&eacute; techniky se daj&iacute; naj&iacute;t v manu&aacute;lu - RTFM!</p>
+<p><br /> <strong>Změna času fotografie: </strong> (př&iacute;klad pro linux/bash ve windows cmdline se bude asi drobne li&scaron;it viz n&aacute;sleduj&iacute;c&iacute; př&iacute;klad - chce to d&aacute;vat pozor na &quot; a ' )</p>
+<pre class="code">exiftool&nbsp; -overwrite_original -AllDates-=1:07 -if '$CreateDate le &quot;2009:01:27 08:00&quot;' *.jpg *.nef
+exiftool  -overwrite_original -AllDates+=6:53 -if '$CreateDate ge &quot;2009:02:15 00:00&quot;' jindra/*.jpg
+exiftool&nbsp; -overwrite_original -AllDates-=1:00 -if '$CreateDate ge &quot;2009:01:27 08:00&quot;' \<br />
+-if '$CreateDate le &quot;2009:02:15 00:00&quot;' *.jpg *.ne
+
+</pre>
+<p>Nejdř&iacute;ve je třeba zjistit rozd&iacute;ly v čase poř&iacute;zen&iacute; mezi jednotliv&yacute;mi fotoapar&aacute;ty. Např. porovn&aacute;n&iacute;m fotek poř&iacute;zen&yacute;ch v jeden čas na jednom m&iacute;stě. Parametr -AllDates pak modifikuje v&scaron;echny pole typu datum v exif informaci o zadan&yacute; interval. V kombinaci s -if je možn&eacute; posunout vždy jen tu č&aacute;st fotek od určit&eacute;ho data . Posledn&iacute;m argumentem je cesta a filtr jak&eacute; soubory se maj&iacute; zpracovat.</p>
+<p><strong>Prejmenovani fotek dle jejich CreateDate</strong> : Fotky se pak v adres&aacute;ři při řazen&iacute; podle jm&eacute;na řad&iacute; v časov&eacute; souslednosti.</p>
+<pre>C:\_me\bin\tools&gt;exiftool.exe &quot;-FileName&lt;CreateDate&quot; -d  &quot;%Y%m%d%H%M-%%f.%%e&quot; W:\outer-space\ape-corsica </pre>
+<p>&nbsp; 1 directories scanned &nbsp;</p>
+<p>45 image files updated</p>
+<p><strong><br /> </strong></p>
+<p><strong>V&yacute;sledek:</strong></p>
+<pre>&nbsp;200902070734_adr_4065.jpg
+&nbsp;200902070739_adr_4067.jpg<br />
+&nbsp;200902071616_ape_6581.jpg
+&nbsp;200902071736_mic_8599.jpg<br />
+&nbsp;200902081139_jnd_1774.jpg<br />
+&nbsp;200902081401_ape_6606.jpg<br />
+&nbsp;200902081748_jnd_1838.jpg
+&nbsp;200902081748_jnd_1839.jpg
+</pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK8AAACvABQqw0mAAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDQvMDQvMDhrK9wWAAACMElEQVQ4ja3SP2gTcRQH8O8vvUtIGmkqTY3SaMVFz6KDW2ywg4s4dGgXp3SyVLIIthCKQxCCuoZaXaSO/ilKd4sSdXRL0EWtIRYaSkXsJTH33utwSZM01xo0D353v+N+97l33/upQCAwFgwGfehiFYtFUxsYGPCmUqmv3YQTicSwBgCapnXTBQBoSinout5VVCnVDr/44B/OZH0xs6KMThCfR3LRs+aTycjvbwfCmawvduZkn7EwN4TBfheY90fXN6uYuffdyGQRu3apkmyDmzM2K8pYmBvC6kcLK+/KMEsWLCIQMSyLULUIFhH0HsGNycNYnDuO6PRno9lQSsFVh+tDQSEY6MHymzJKFQILgxkgYhALmBnMDLNsIf1sA8cG3VDYYzhFAWWfRBjCAiIbIxYQE1ga17+2GSICKLQYznCtiATEDK6BIrU5MUhgd0+NH+AIt+5jshdqgkpVwEwNkBgs9lyE4XY3nnLMWNf13QEAG1uE2JVe9PUC5JCvCMPrVpifOor1YnW34/pw7NjvVbmZ+3ljcTaMq5EjbRFJ07Gw8QfTd9fg96rc3o7bMh4f9SytvDenLl7/ZADAl5cjWF7dwmy60PaSeiPjo56lv2Ycnzi0Fp9AEgAu39x8+urtT9x5/GP74a2++LlTuumo76kDd4W9ALj9qIDIiOfBhdO+jtB9O279TFcuet77fD7Wn+sU7ajj1+kTSccb/wv/aymloEKh0Fg4HPZ2E87n86Udvs4FoWqwSHUAAAAASUVORK5CYII=" border="0" /></p>
+
