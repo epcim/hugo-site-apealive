@@ -4,7 +4,7 @@ languageCode = "en-us"
 
 theme           = "hugo-minimalist-theme"
 disqusShortname = "apealive"
-paginate        = 10
+paginate        = 20
 canonifyurls    = true
 
 
@@ -16,11 +16,10 @@ canonifyurls    = true
     location         = "Brandys nad Labem - Stara Boleslav"
 
     copyright        = "(C) APe, Powered by [Hugo](http://gohugo.io)."
-    google_analytics = ""
+    google_analytics = "UA-71675144-1"
 
-    # https://mudcu.be/bg/
-    header_background      = "img/ZenBG.png"
-    avatar                 = "img/profile-image.png"
+    header_background= "img/ZenBG.png"
+    avatar           = "img/profile-image.png"
 
 
 

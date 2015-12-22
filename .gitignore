@@ -2,3 +2,7 @@
 themes/**
 static/**
 public/**
+
+layouts.draft
+themes.catalog
+tmp
