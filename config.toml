@@ -1,4 +1,4 @@
-baseurl      = "https://blog.apealive.net/"
+baseurl      = "http://apealive.net/"
 title        = "make me: APe"
 languageCode = "en-us"
 
@@ -36,5 +36,6 @@ canonifyurls    = true
     instagram = ""
     github    = "epcim"
     gplus     = "PetrMichalec-Prague"
+    delicious = "epcim"
 
 

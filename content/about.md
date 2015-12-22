@@ -1,12 +1,12 @@
 +++
 date = "2015-10-05T10:28:19+02:00"
-draft = true
+draft = false
 title = "Who is APe?"
 tags = ['profile']
 disable = ['comments','share']
 +++
 
-*<a href="https://goo.gl/photos/e56EUzqnLjJUJxHq5" target="_blank">APe</a> je maskot naší rodiny. Dobře profláknutý mezi našimi kamarády pro své kousky. Občas ho stratíme, takže docela dost cestuje...*
+*<a href="https://goo.gl/photos/e56EUzqnLjJUJxHq5" target="_blank">APe</a> je maskot naší rodiny. Dobře profláknutý mezi našimi kamarády pro své kousky. Občas ho ztratíme, takže docela dost cestuje...*
 
 <!--[Adriana]({{< ref "about_adriana.md" >}})
 -->
