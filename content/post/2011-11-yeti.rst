@@ -11,8 +11,9 @@ disable = ['comments']
  Some our friends says.. we haven't seen you with your Yeti yet. So here we go with pictures.
 Three months back we did bought Skoda Yeti 2.0 TDI. Eye-candy, isn't it?
 
-.. image:: http://media.apealive.net/apealive/blog/images/2011/11/_APE8126.jpg 
-   :width: 250
-.. image:: http://media.apealive.net/apealive/blog/images/2011/11/_APE8128.jpg 
-   :width: 250"
+.. image:: /media/post/2011/11/_APE8126.jpg
+   :width: 250px
+
+.. image:: /media/post/2011/11/_APE8128.jpg
+   :width: 250px
 

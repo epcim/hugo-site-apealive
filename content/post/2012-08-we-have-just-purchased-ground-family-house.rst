@@ -18,10 +18,10 @@ http://mapy.cz/s/4KIH
 Plans
 -------------------------------------------
 
-.. image:: /img/post/2012/08/2.jpg
+.. image:: /media/post/2012/08/2.jpg
    :width: 250
 
-.. image:: http://media.apealive.net/apealive/blog/images/2012/08/4.jpg 
+.. image:: /media/post/2012/08/4.jpg 
    :width: 250
 
 Hope, you like it as we do!

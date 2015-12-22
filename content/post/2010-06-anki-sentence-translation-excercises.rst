@@ -8,9 +8,6 @@ disable = ['comments']
 +++
 
 
- Post
-==============
-
 Summary
 -------------------------
 I have managed to grab Questions and Answers from scanned PDF version of real grammar book and create an Anki deck from it. Although OCR was not perfect at all I was able to restore 50% of all exercises using some smart reg ex replacements in vim editor. Publishing final deck is not possible because of legal issues but I have decided to publish this how-to.
@@ -92,12 +89,12 @@ Since sucession of pairs was not stable in the source it was necessary to create
 
 Screenshots
 -----------------------
-.. image:: http://media.apealive.net/apealive/blog/images/2010/06/2010-06-06-225713_513x554_scrot.png
+.. image:: /media/post/2010/06/2010-06-06-225713_513x554_scrot.png
 
 Downloads
 -----------------------
- * My quick and dirty `parse script <http://media.apealive.net/apealive/blog/files/2010/06/parse.zip>`_. 
- * Empty `Anki deck <http://media.apealive.net/apealive/blog/files/2010/06/SentencesEx.anki>`_. (examples,  templates and modified learning options)
+ * My quick and dirty `parse script </files/post/2010/06/parse.zip>`_.
+ * Empty `Anki deck </files/post/2010/06/SentencesEx.anki>`_. (examples,  templates and modified learning options)
 
 APe
 

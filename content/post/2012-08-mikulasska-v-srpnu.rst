@@ -10,4 +10,4 @@ disable = ['comments']
 
  Mikuláš pictures leaked - PDF_.
 
-.. _PDF: http://media.apealive.net/apealive/blog/files/2012/08/MikulasskaVSrpnu.pdf
+.. _PDF: /files/post/2012/08/MikulasskaVSrpnu.pdf

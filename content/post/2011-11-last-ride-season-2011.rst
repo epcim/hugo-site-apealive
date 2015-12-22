@@ -31,7 +31,7 @@ Actually my bike is in inconsistent state from August. It's has smashed bearings
 Well my bike survied at the end. What was a surprise not me. Few km's and ''Drobecek'' hill past our lunch stop ''Sedlcany'' my energy and leg power was totally drained. The sun was on a way down so we decide to divide. Group did continued to ''Cercany'' and I did choosed closes way (25km) to railway station 'Olbramovice' (roads only:).
 
 
-.. image:: http://media.apealive.net/apealive/blog/images/2011/11/2011-11-14-080228_649x710_scrot.png 
+.. image:: /media/post/2011/11/2011-11-14-080228_649x710_scrot.png 
    :width: 400
 
 Even the hassle, that was great event. Excellent weather with clear sky and sunny day. Even frost and cold conditions. Couple of remarks - Calvados is not just an alcolhol but a tasty apple as well. November seenms the most dangeros for bikers - it's not cold, winter, ice etc.. it's hunters season. Well riding a nature while passing groups of hunters pointing at duck above your head is like from a cartoon story. 

@@ -14,16 +14,16 @@ My už máme jasno. U fotografa zastavíme pravidelně. Není nad pořádný fot
 
 *On a Ona*
 
-.. image:: http://media.apealive.net/apealive/blog/images/2012/05/8.jpg
+.. image:: /media/post/2012/05/8.jpg
    :width: 600
 
 *She and He*
 
-.. image:: http://media.apealive.net/apealive/blog/images/2012/05/5.jpg
+.. image:: /media/post/2012/05/5.jpg
    :width: 600
 
 *Spot the APe*
 
-.. image:: http://media.apealive.net/apealive/blog/images/2012/05/11.jpg
+.. image:: /media/post/2012/05/11.jpg
    :width: 600"
 
