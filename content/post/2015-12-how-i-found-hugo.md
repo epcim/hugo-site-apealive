@@ -1,6 +1,6 @@
 +++
 date = "2015-10-05T10:31:07+02:00"
-draft = true
+draft = false
 title = "How i found hugo"
 tags = ["blog","news"]
 +++
