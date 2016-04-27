@@ -49,7 +49,7 @@ virtualisation, deployment automation, software development, testing and writing
 
 I have experience as team lead and architect for private cloud implementation.
 My current primary focus is cloud service implementation and application development
-for cloud environments. As of 2014 I work on DevOps tool-chain using Chef, Docker, OpenStack, Drone, KitchenCI and Serverspec, ...
+for cloud environments. As of 2014 I work on DevOps tool-chain using Chef, Docker, OpenStack, Consul, Drone.io, KitchenCI, InSpec, ...
 
 ### Key skills
 
