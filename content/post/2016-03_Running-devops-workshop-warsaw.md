@@ -51,5 +51,5 @@ If you are interested I would be pleased to deliver:
 
 # Photos from the trip
 
-{{< figure src="/media/post/2016/2016-03_WarshowDevOpsWorkshop.png" title="Warshow devops workshop" >}}
+{{< figure src="/media/post/2016/2016-03_WarsawIBMHQ.jpg" title="Warsaw, IBM HQ" >}}
 
