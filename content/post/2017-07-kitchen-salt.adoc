@@ -1,0 +1,49 @@
++++
+date = "2017-20-07T10:01:07+02:00"
+draft = true
+title = "Testing salt formulas and models with kitchen-salt"
+slug = "kitchen-salt"
+tags = ["blog", "salt", "devops", "kitchen-salt", "test-kitchen", "kitchen-test", "inspec"]
++++
+
+
+= TL;DR
+
+[.lead]
+An overview how to implement salt-formula test's with kitchen-salt.
+
+== Overview
+
+https://salt-formulas.readthedocs.io/en/latest/develop/index.html#testing
+https://github.com/saltstack/kitchen-salt
+
+https://github.com/saltstack/kitchen-salt/pull/158 (test infra)
+
+
+[source, yaml]
+.gpg-encrypted-pillar.yml
+  xyz
+
+FIXME https://github.com/salt-formulas/reclass[reclass].footnote:[Reclass - Recursive external node classifier for automation tools like Ansible, Puppet, and Salt.]
+FIXME https://github.com/salt-formulas/[salt-formulas].footnote:[Salt-Formulas - Community developed SaltStack formulas]
+FIXME https://github.com/salt-formulas/salt-formulas[salt-formulas repo] Documentation and tools to navigate and use the salt-formulas project
+
+bootstrap.sh
+https://github.com/salt-formulas/salt-formulas-scripts
+
+kitchen model testing
+https://github.com/salt-formulas/salt-formulas/tree/master/deploy/model
+
+NOTE: `/srv/salt/env/dev` is my `salt://` path.
+TIP: `/srv/salt/env/dev` is my `salt://` path.
+CAUTION: `/srv/salt/env/dev` is my `salt://` path.
+
+= Summary
+Finally a simple and robust solution for encrypted pillar values. (being said, well you can't encrypt keys or whole pillars yml's this way)
+
+
+= Other resources
+* https://docs.saltstack.com/en/develop/ref/modules/all/salt.modules.nacl.html
+* https://docs.saltstack.com/en/develop/ref/runners/all/salt.runners.nacl.html
+
+# vim: filetype=asciidoc

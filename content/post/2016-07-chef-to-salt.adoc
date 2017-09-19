@@ -1,0 +1,32 @@
++++
+date = "2017-09-07T10:01:07+02:00"
+draft = true
+title = "Cheft to Salt overview after 12 months"
+slug = "chef-to-salt"
+tags = ["blog","salt", "devops", "chef", "reclass"]
++++
+
+== TL;DR
+
+One and year ago I came from Chef configuration management to Salt.
+I dont want to compare these great tools.
+
+With this article I have two aims:
+* highlight what are the equivalents in both worlds
+* describe advanced salt setup, especially the concept behind https://github.com/salt-formulas/salt-formulas[salt-formulas]
+
+
+== Salt SSH
+https://blog.logentries.com/2015/04/salt-ssh-for-remote-execution-of-states-and-modules/
+
+== Some nice resources
+
+Chef vs. Salt for elsewhere:
+
+- https://stevebennett.me/2014/02/17/one-week-of-salt-frustrations-and-reflections/
+- https://z900collector.wordpress.com/linux/getting-started-with-saltstack/
+- https://z900collector.wordpress.com/linux/saltstack-handy-scripting-tips/
+- https://z900collector.wordpress.com/linux/saltstack-using-grains/
+- https://z900collector.wordpress.com/linux/using-the-saltstack-mysql-module/
+
+# vim: filetype=asciidoc
