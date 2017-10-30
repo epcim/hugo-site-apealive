@@ -1,17 +1,21 @@
 +++
-date = "2017-19-07T10:01:07+02:00"
+date = "2017-09-19T12:01:07+02:00"
 draft = false
-title = "Saltstack Salt NACL encryption on ext pillars"
-slug = "salt-nacl-ext-pillar"
+title = "Salt NACL encryption for external pillars"
+#slug = "salt-nacl-ext-pillar"
 tags = ["blog", "salt", "devops", "nacl", "reclass"]
 +++
 
-
-= TL;DR
+:source-highlighter: coderay
 
 [.lead]
 This article is about encrypting Satl external pillars with NACL.
-Based on https://github.com/saltstack/libnacl[salt libnacl] wrapper for https://github.com/jedisct1/libsodium[libsodium] and
+
+<!--more-->
+
+== TL;DR
+
+Salt NACL is based on another SaltStack project https://github.com/saltstack/libnacl[libnacl], an wrapper for https://github.com/jedisct1/libsodium[libsodium] and
 Salt nacl resources (https://github.com/saltstack/salt/blob/develop/salt/moduels/nacl.py[module], https://github.com/saltstack/salt/blob/develop/salt/runners/nacl.py[runner], https://github.com/saltstack/salt/blob/develop/salt/renderers/nacl.py[renderer] and https://github.com/saltstack/salt/blob/develop/salt/pillar/nacl.py[ext_pillar]).
 
 Overview of merged features to https://github.com/saltstack/salt/pulls?utf8=%E2%9C%93&q=is%3Apr%20is%3Aclosed%20nacl[`develop`] branch:
@@ -26,7 +30,7 @@ Open bugs:
 * https://github.com/saltstack/salt/pull/43564
 * https://github.com/saltstack/salt/pull/43563 or https://github.com/saltstack/salt/pull/43515
 
-== Overview
+=== Overview
 
 To securely deal with credentials, keys and any other private data in Salt pillars
 you have couple of options to choose today.
@@ -58,8 +62,8 @@ will look like this:
 
 [source, yaml]
 .gpg-encrypted-pillar.yml
-
-  a-secret: |
+----
+  a-secret:
     -----BEGIN PGP MESSAGE-----
     Version: GnuPG v1
     hQEMAweRHKaPCfNeAQf9GLTN16hCfXAbPwU6BbBK0unOc7i9/etGuVc5CyU9Q6um
@@ -72,22 +76,22 @@ will look like this:
     skqmFTbOiA==
     =Eqsm
     -----END PGP MESSAGE-----
-
+----
 
 That is obviously quite hard to maintain if you manipulate your pillar yamls with text editor.
 
 With NACL it's another story. First it's based on [libsodium].
 
 [quote, libsodium.org]
-Sodium is a new, easy-to-use software library for encryption, decryption, signatures,
-password hashing and more. It is a portable, cross-compilable, installable,
-packageable fork of http://nacl.cr.yp.to/[NaCl], with a compatible API, and an extended API to improve usability even further. Its goal is to provide all of the core operations needed to build higher-level cryptographic tools.
+  Sodium is a new, easy-to-use software library for encryption, decryption, signatures,
+  password hashing and more. It is a portable, cross-compilable, installable,
+  packageable fork of http://nacl.cr.yp.to/[NaCl], with a compatible API, and an extended API to improve usability even further. Its goal is to provide all of the core operations needed to build higher-level cryptographic tools.
 
 With NACL with default setup the cipher is much shorter. And for short input it have also have
 padding to output within minimal block size mask (as far as I understand).
 
 
-== Use-Case with ext_pillar.
+=== Use-Case with ext_pillar
 
 While NACL in Salt can end-to-end encryption, the usage with ext_pillar is way of simplified.
 It don't replace sophisticated, enterprise level, solutions as Vault.
@@ -102,135 +106,167 @@ My Salt external pillars are distributed as git repository that holds the https:
 
 (an shared piece of  https://github.com/Mirantis/reclass-system-salt-model[our model as an example])
 
-== Sealed and Secret box
+=== Sealed and Secret box
 
 When it comes to NACL implementation you have two options. `sealedbox` or `secretbox`.
 
-SecretBox is data encrypted using private key `sk`.
-Sealedbox is encrypted using public key `pk`.
+SecretBox is data encrypted using private key `sk`. Sealedbox is encrypted using public key `pk`.
 
 Recommend using Sealedbox because the one way encryption permits developers to encrypt data for source control but not decrypt.
 
 
-== What is not in the article
+=== What is not in the article
 This tutorial don't cover workflow for nacl key distribution, lifecycle and secure storage.
 
 For enterprise or large scale production environments you still want to combide it with additional SDB options like Vault (there is a possibility to mix native pillars and external pillars).
 
-= Setup
+== Setup
 
 In order to get NACL configured you have to do couple of steps described below. Full documentation is available on https://docs.saltstack.com/en/develop/ref/modules/all/salt.modules.nacl.html[SaltStack doc page].
 
 
-== Install prerequisite libraries
+=== Install prerequisite libraries
 
-[source, shell]
-  pip install --upgrade libnacl===1.5.2
+[source, bash]
+----
+$ pip install --upgrade libnacl===1.5.2
+----
 
 CAUTION: Ensure you have version at least 1.5.2
 
 Optionally:
-[source, shell]
-  apt install nacl-tools
 
-== Generate your secret and public key
+[source, bash]
+----
+$ apt install nacl-tools
+----
 
-[source, shell]
+=== Generate your secret and public key
 
-  salt-call --local nacl.keygen /etc/salt/pki/master/nacl
-    local:
-        saved sk_file:/etc/salt/pki/master/nacl  pk_file: /etc/salt/pki/master/nacl.pub
+[source, bash]
+----
+$ salt-call --local nacl.keygen /etc/salt/pki/master/nacl
 
-== Configure salt master ext_pillars
+  local:
+    saved sk_file:/etc/salt/pki/master/nacl  pk_file: /etc/salt/pki/master/nacl.pub
+----
+
+=== Configure salt master ext_pillars
 
 [source, yaml]
 ./etc/salt/master.d/master.conf
+----
+nacl.config:
+    box_type: sealedbox
+    sk_file: /etc/salt/pki/master/nacl
+    pk_file: /etc/salt/pki/master/nacl.pub
 
-     nacl.config:
-         box_type: sealedbox
-         sk_file: /etc/salt/pki/master/nacl
-         pk_file: /etc/salt/pki/master/nacl.pub
-     reclass: &reclass
-       storage_type: yaml_fs
-       inventory_base_uri: /srv/salt/reclass
-     master_tops:
-       reclass: *reclass
-     ext_pillar:
-       - reclass: *reclass
-       - nacl: {}
+reclass: &reclass
+  storage_type: yaml_fs
+  inventory_base_uri: /srv/salt/reclass
 
-== Encrypt your secrets
+master_tops:
+  reclass: *reclass
+
+ext_pillar:
+  - reclass: *reclass
+  - nacl: {}
+----
+
+=== Encrypt your secrets
 
 We will use sealed box thus we keep our `sk_file` out of the model and distributed independently.
 Our secrets will be encrypted with the `pk_file` (public key). This one can be distributed with model on pillar.
 
-[source, shell]
-  salt-call --local nacl.enc 'my_secret_value' pk_file=/etc/salt/pki/master/nacl.pub
-    hXTkJpC1hcKMS7yZVGESutWrkvzusXfETXkacSklIxYjfWDlMJmR37MlmthdIgjXpg4f2AlBKb8tc9Woma7q
+[source, bash]
+----
+$ salt-call --local nacl.enc 'my_secret_value' pk_file=/etc/salt/pki/master/nacl.pub
 
-  When the key is defined in the master config you can use it from the nacl runner:
+  hXTkJpC1hcKMS7yZVGESutWrkvzusXfETXkacSklIxYjfWDlMJmR37MlmthdIgjXpg4f2AlBKb8tc9Woma7q
+----
 
-[source, shell]
-  salt-run nacl.enc 'myotherpass'
-    ADDFD0Rav6p6+63sojl7Htfrncp5rrDVyeE4BSPO7ipq8fZuLDIVAzQLf4PCbDqi+Fau5KD3/J/E+Pw=
+When the key is defined in the master config you can use it from the nacl runner:
+
+[source, bash]
+----
+$ salt-run nacl.enc 'myotherpass'
+
+  ADDFD0Rav6p6+63sojl7Htfrncp5rrDVyeE4BSPO7ipq8fZuLDIVAzQLf4PCbDqi+Fau5KD3/J/E+Pw=
+----
 
 
-== NACL on ext_pillar
+=== NACL on ext_pillar
 
-=== Encrypted values on pillar
+==== Encrypted values on pillar
 
 Update reclass `class` holding pillar data, it's as easy a enclose the crypted data within the `NACL[crypted data]` envelope:
 
 TIP: The syntax is for sure the same for non-ext_pillars
+
 [source, yaml]
 ./srv/salt/reclass/classes/cluster/region01/infra/test_nacl.yml
-  parameters:
-    my_pillar:
-      my_nacl:
-          key0: unencrypted_value
-          key1: NACL[hXTkJpC1hcKMS7yZVGESutWrkvzusXfETXkacSklIxYjfWDlMJmR37MlmthdIgjXpg4f2AlBKb8tc9Woma7q]
+----
+parameters:
+  my_pillar:
+    my_nacl:
+        key0: unencrypted_value
+        key1: NACL[hXTkJpC1hcKMS7yZVGESutWrkvzusXfETXkacSklIxYjfWDlMJmR37MlmthdIgjXpg4f2AlBKb8tc9Woma7q]
+----
 
 
 Check pillar:
-[source, shell]
-  salt cfg\* pillar.data |egrep 'my_nacl:' -A6
-      my_nacl:
-          ----------
-          key0:
-              unencrypted_value
-          key1:
-              my_secret_value
+[source, bash]
+----
+$ salt cfg\* pillar.data |egrep 'my_nacl:' -A6
+    my_nacl:
+        ----------
+        key0:
+            unencrypted_value
+        key1:
+            my_secret_value
+----
 
 NOTE: for native pillars you should mark first line of your pillar .yml with corresponding shebang header `#!yaml|nacl`.
 
-=== large files
+TODO: Use CLI,sed to update your pillar's on the fly.
 
-[source, shell]
-  salt-call nacl.enc_file /tmp/cert.crt out=/srv/salt/env/dev/cert.nacl
-  # or more advanced
-  cert=$(cat /tmp/cert.crt)
-  salt-call --out=newline_values_only nacl.enc_pub data="$cert" > /srv/salt/env/dev/cert.nacl
+==== large files
+
+[source, bash]
+----
+$ salt-call nacl.enc_file /tmp/cert.crt out=/srv/salt/env/dev/cert.nacl
+
+# or more advanced
+$ cert=$(cat /tmp/cert.crt)
+$ salt-call --out=newline_values_only nacl.enc_pub data="$cert" > /srv/salt/env/dev/cert.nacl
+----
 
 NOTE: `/srv/salt/env/dev` is my `salt://` path.
 
+TODO: Add advanced example from our formulas
 
-== Usage of nacl module on native pillars
+=== Usage of nacl module on native pillars
 Besides that you may want to use NACL module on native pillars:
 
 [source, yaml]
-  pillarexample:
-      user: root
-      password1: {{salt.nacl.dec('DRB7Q6/X5gGSRCTpZyxS6hlbWj0llUA+uaVyvou3vJ4=')|json}}
-      cert_key: {{salt.nacl.dec_file('/srv/salt/env/dev/certs/example.com/cert.nacl')|json}}
-      cert_key2: {{salt.nacl.dec_file('salt:///certs/example.com/cert2.nacl')|json}}
+.mypillar.yml
+----
+pillarexample:
+    user: root
+    password1: {{salt.nacl.dec('DRB7Q6/X5gGSRCTpZyxS6hlbWj0llUA+uaVyvou3vJ4=')|json}}
+    cert_key: {{salt.nacl.dec_file('/srv/salt/env/dev/certs/example.com/cert.nacl')|json}}
+    cert_key2: {{salt.nacl.dec_file('salt:///certs/example.com/cert2.nacl')|json}}
+----
 
-= Summary
-Finally a simple and robust solution for encrypted pillar values. (being said, well you can't encrypt keys or whole pillars yml's this way)
+== Summary
+Finally a simple but robust solution for encrypted pillar values. (being said, well you can't encrypt keys or whole pillars
+yml's this way). For a serious enterprise level you still might have a need for external credential store to employ common
+security policies as key/password rotation, end-to-end, which these tools offer. Wort to mention that external pillars are quite familiar 
+in Salt community so we should push hard to have features like SDB's available for external pillars as well.
 
 
-= Other resources
+== Other resources
 * https://docs.saltstack.com/en/develop/ref/modules/all/salt.modules.nacl.html
 * https://docs.saltstack.com/en/develop/ref/runners/all/salt.runners.nacl.html
 
-# vim: filetype=asciidoc
 

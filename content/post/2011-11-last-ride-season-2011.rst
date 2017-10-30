@@ -8,18 +8,18 @@ disable = ['comments']
 +++
 
 
- Saturday was last ride this year.
+Saturday was last ride this year.
 
-  Rychlik p 1831 Jordán odjídí z Praha hl.n. v  8:43. Vlak nečeká na žádné přípoje. 
-  Uschova během přepravy rozířená přeprava spoluzavazadel, předevím jízdních kol. 
-  Praha-Hostivař  8:56 
-  Čerčany  9:21 
-  Beneov u Prahy  9:31  
-  Střezimíř  10:14
- 
-  Ve ctvrt na jedenact vyrazime ze zastavky Strezimir a pojedeme po hrebenech nad Prciceme pres Sedlcany na Neveklov, smerem k Sazave a dale ku Praze jak komu libo.
+ Rychlik p 1831 Jordán odjídí z Praha hl.n. v  8:43. Vlak nečeká na žádné přípoje. 
+ Uschova během přepravy rozířená přeprava spoluzavazadel, předevím jízdních kol. 
+ Praha-Hostivař  8:56 
+ Čerčany  9:21 
+ Beneov u Prahy  9:31  
+ Střezimíř  10:14
 
- 
+Ve ctvrt na jedenact vyrazime ze zastavky Strezimir a pojedeme po hrebenech nad Prciceme pres Sedlcany na Neveklov, smerem k Sazave a dale ku Praze jak komu libo.
+
+
 For me personally and honestly for my bike it was last ride ever.
 
 I started in prague - fighting with pensioners for seat\'s in train. Sure I did lost even my seat while manipulating my bike in cabin corridor on stops.

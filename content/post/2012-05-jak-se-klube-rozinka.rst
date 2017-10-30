@@ -25,5 +25,5 @@ My už máme jasno. U fotografa zastavíme pravidelně. Není nad pořádný fot
 *Spot the APe*
 
 .. image:: /media/post/2012/05/11.jpg
-   :width: 600"
+   :width: 600
 

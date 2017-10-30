@@ -1,8 +1,8 @@
 +++
-date = "2017-20-07T10:01:07+02:00"
+date = "2017-07-20T12:01:07+02:00"
 draft = true
 title = "Testing salt formulas and models with kitchen-salt"
-slug = "kitchen-salt"
+#slug = "kitchen-salt"
 tags = ["blog", "salt", "devops", "kitchen-salt", "test-kitchen", "kitchen-test", "inspec"]
 +++
 
@@ -14,10 +14,22 @@ An overview how to implement salt-formula test's with kitchen-salt.
 
 == Overview
 
-https://salt-formulas.readthedocs.io/en/latest/develop/index.html#testing
-https://github.com/saltstack/kitchen-salt
+In this article I will talk about writing and testing https://github.com/salt-formulas[salt-formulas].
+An curated collection of formulas behind salt-formulas community. The concepts however will fit to any
+salt formula.
 
+If you are interested in https://github.com/salt-formulas[salt-formulas] read more at:
+https://salt-formulas.readthedocs.io/en/latest[readthedocs].
+
+To test formulas we will use https://github.com/saltstack/kitchen-salt[kitchen-salt] framework.
+To setup your local test infrastructure please follow this documentation:
+https://salt-formulas.readthedocs.io/en/latest/develop/index.html#testing[salt-formulas/testing].
+
+Kitchen spin an instance where salt-call is executed.
 https://github.com/saltstack/kitchen-salt/pull/158 (test infra)
+
+For more, explore it's rich
+`ecosystem <https://github.com/test-kitchen/test-kitchen/blob/master/ECOSYSTEM.md>`_ of supported drivers/provisioners/verifiers/...
 
 
 [source, yaml]

@@ -1,8 +1,8 @@
 +++
-date = "2017-09-07T10:01:07+02:00"
+date = "2017-09-07T12:01:07+02:00"
 draft = true
 title = "Cheft to Salt overview after 12 months"
-slug = "chef-to-salt"
+slug = "2017-chef-to-salt"
 tags = ["blog","salt", "devops", "chef", "reclass"]
 +++
 

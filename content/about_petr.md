@@ -8,64 +8,81 @@ disable = ['comments']
 
 # Petr Michalec
 
-Developer. IBMer. Vi(m) lover. DevOps kid. Performing cloud infrastructure and application architecture with passion for the edge thing. I am not obsessed with emails and spreadsheet thing as an ordinary IBMers. If you wanna reach me use Twitter.
+A Developer. ExIBMer. Vi(m) lover. DevOps and Opensorce devoted.
+Performing cloud infrastructure and application architecture with passion for the edge thing.
+If you wanna reach me use Keybase, Twitter or any in place notification on a service we met.
+(Don't count I read emails or answer cell phones)
 
 ## Contact
 
-<!-- for these who are used to read source code .-)
+<!-- for these who are used to read between lines of code ;-)
 Mobile number:
     00420-734-420-347
 -->
 
-### Twitter
+### Twitter, Keybase, GitHub, IRC
 
-> [@epcim](https://twitter.com/epcim)
+> [@epcim](https://keybase.io/epcim)
 
 ### Work email
 ```none
     epcim(a)apealive.net
-    petr_michalec(a)cz.ibm.com
+    pmichalec(a)mirantis.com
 ```
 
 ### Work address
 
 ```none
+    Mirantis Czech a.s.
+    Thámova 137/16
+    Prague - Karlín, 18600
+    Czech Republic
+```
+<!--
     IBM Czech Republic
     THE PARK, V PARKU 2294/4, Building: 1480
     PRAHA , 14800
     Czech Republic
-```
+-->
 
 ## CV
 
-Practicing IT Specialist/IT Architect. IBM RedBook author. Certified Cloud Solution
+Practicing Developer/Architect/Tech Lead. IBM RedBook author. Certified Cloud Solution
 Architect. Wide range skills in the `uni*x` IT infrastructure, automation, deployments &
 monitoring and DevOps. Enterprise business experience since 2004. Strong skills and passion I
-have for "edge", opensource implementation, data analytics and visualization.
+have for technological "edge" implementation, data analytics and visualization.
 I am a dedicated team player.
 
 I have hands-on experience with major relational and no-sql databases, networking,
 virtualisation, deployment automation, software development, testing and writing technical documentation.
 
-I have experience as team lead and architect for private cloud implementation.
-My current primary focus is cloud service implementation and application development
-for cloud environments. As of 2014 I work on DevOps tool-chain using Chef, Docker, OpenStack, Consul, Drone.io, KitchenCI, InSpec, ...
+I have experience as team lead and architect for private cloud implementations, large scale deployments and
+daily operations for major world-wide customers.
+
+My common DevOps tool-chain and experience counts Salt, Chef, Docker, OpenStack, Kubernetes, Helm charts, Consul/Etcd, 
+Drone.io/Travis/Jenkins, KitchenCI/InSpec/Infratester, Telegraf/Fluent/Prometheus/Hubblestack.io, ...
 
 ### Key skills
 
 - Fluent English with communication and presentation skills.
-- Development and implementation w/Linux systems and open-source solutions.
-- Infrastructure architecture and cloud architectures for private clouds using OpenStack, IBM offerings and SoftLayer/Bluemix.
-- Used to write in Python, Ruby, C#/.NET, Java and Javascript.
+- Infrastructure and cloud architecture for private and public Openstack/Kubernetes/CloudFoundry.
+- System and infrastructure deployment for large infrastructures.
+- Operation support of production environments of 1k nodes.
+- Development and custom solutions for Linux and open-source solutions.
+- Programming in Python, Ruby, (C#/.NET, Java and Javascript).
 - DevOps tool-chain for Continuous Integration / Continuous Deployment.
-- IBM SW products (DB2, ITM, BPM, TSAM, ICO/ICM, Cognos)
+- IBM SW products (DB2, ITM, BPM, TSAM, Cognos, IBM Cloud \*\*)
 
 
 ### Career history
 
-**if you wanna be listed here, make me an offer ;-)*
+**You wanna be listed here, make me an offer ;-)*
 
-2004/04 - <sup> to </sup><sub> date </sub> &dash; IBM Czech Republic, Czech Republic
+2016/10 - <sup> to </sup><sub> date </sub> &dash; Mirantis, Czech Republic
+
+2016/05 - 2016/10 &dash; tcp cloud, Czech Republic (Acquired by Mirantis)
+
+2004/04 - 2016/05 &dash; IBM Czech Republic, Czech Republic
 
 2003/06 - 2003/11 &dash; Contactel s.r.o, Czech Republic
 
@@ -78,13 +95,26 @@ IBM Implementation Services for Private Clouds:Implementation Guide for Practiti
 Authors: D.Straeten, S.Hopkins, J.Huang, S.Joshi, S.Pillay, P.Michalec, S.Paul, J.Pierce, E.Sofianos, S.Weis,M.L.;Redbook; IBM ITSO, 2013; ISBN/ISSN: 0738438359
 
 
+### Talks
+
+* Docker meetup - Swarm (http://slides.com/petrmichalec/docker-swarm)
+* IBM CZ, Chef DevOps Kung-fu workshop (http://slides.com/petrmichalec/epcim-devops-cult)
+* IBM PL, DevOps workshop in Warsaw
+* IBM CZ, Docker workshop in Prague
+
+
 ## Personal interests
 
-[Photography]({{< ref "photo.md" >}})
+* Running
 
-[OpenSource participation](https://github.com/epcim)
+* Kids (two boys and a small lady)
 
-[What ever it fly, but RC planes]({{< ref "planes.md" >}})
+* RC Planes, Drones
+
+* [Photography]({{< ref "photo.md" >}})
+
+* [OpenSource](https://github.com/epcim)
+
 
 
 

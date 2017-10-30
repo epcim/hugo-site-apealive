@@ -1,0 +1,188 @@
++++
+date = "2017-10-22T01:01:01+02:00"
+draft = true
+title = "Albania 2017"
+#slug = "salt-nacl-ext-pillar"
+tags = ["blog", "travel", "roadtrip", "albania", "vacation"]
++++
+
+:source-highlighter: coderay
+
+[.lead]
+Three mens, one free week, roadtrip in Albania. Tirana, riviera, south and finally the transit Budapest.
+
+<!--more-->
+
+== TL;DR
+
+We planned the trip one week before we left. Albania is know for it's raw nature, mountains and coast. 
+Visiting a mountains in the north part at the mid of the October was not an option as the weather is
+colder and we wanted travel light.
+
+We got nice recommendations from "Alfi" an Albanian friend who runs a nice Caffe/Bar in Nymburk.
+As many people, even we considered Albania and undeveloped country and poor people. What a surprise we soon
+have found a much better picture of the region.
+
+Albania is a nice country we finally decided to go back soon. For a fun with our families and possible even for a north
+region for mountains we were forced to skip this time.
+
+I wrote this for a record. Some details are not mentioned. Contact me if you have questions. 
+Some tips for the future vist are at the end of the article. Hope you find it useful.
+
+== Travel
+
+Travelers:
+
+* Michal Peska
+* Petr Michalec
+* Radovan Svaty
+
+Radovan found a nice tickets from Budapest for 23000Ft (however if you will by them two months before the flight
+you may get even better price \~40e for a return trip including baggages). So we have drove a car from Czech Republic and
+left the car on a Parking slot for about 20e. The other option is to fly to Corfu and take a ship.
+
+=== Weather
+Weather conditions were quite generous to us as during the day was average 24stp, with max 28. On the evening/night 12-15.
+Usually it starts to rain at the beginning of October, but not this time. Long pants and a jacket for a night is good option.
+(Notable to mention Albanians wear long pants and even sweter so tourists in shorts looks different.)
+
+=== Car
+We booked a car before the flight at Enterprise. Unless you go to Albania just for riviera at coast, short trips don't go with small cars. Roads
+are fine on main ways, but any city/smaller road you will meet pot holes or stones.
+Worth to mention that for 4x4 "Suziki Vitara" category we booked we were first offered
+Fiat500. Finally we got Duster, but simle tires and pretty bad condition (seems like bee flooded a week).
+If you want to go for mountains, dirty offroads make sure you buy real offroad car and you have it confirmed first.
+For short trips on main highways I would by a car at the airport or Tirana so you can get a better price and you can choose
+what's available from multiple companies.
+
+Roads are moderate on a main highways. We were couple of times warned don't go out of these without a good car. It's not
+dangerous, but you will lost your time. Signs get much better these days. Streets has names, roundabouts are well signed and
+with GPS offline map we had no issues to navigate to the destination.
+
+This country is amazing. The petrol stations are everywhere as frequent as small old bunkers from 2nd world war.
+In average there were always four petrol stations within 3km. Almost seems it's a family business here.
+
+=== Itinerary
+The itinerary was set on the way. We have had just main points. Finally we choose to go from
+Tirana to Dures first day,
+then to Betrat for the second,
+third day we spend mostly driving the riviera to Borsc.
+Then we have moved to Sarrande, Gjirokaster and finally Kruje \~30km above the Tirana.
+Last day we spent in Tirana.
+
+=== Prices
+Prices were nice. In general three times cheaper or equal to Czech Republic at finest places.
+Accommodation in average 20e for all of us.
+
+=== Internet
+Internet is everywhere but for some stupid reason, telco companies, has this Europe touching country (Greece, 30km to Itally and even less
+to Corfu) on a list of II. zone so calls, sms and data are not worth the price. No worry, from Borsc to south you will be
+able to connect to EU cell network on Corfu.
+
+The best experience ever was food, services and great coffee on every corner.
+
+== Places we visited
+
+The country very conservative. You can meet grandpa's in a suit the whole day, playing chess or drinking coffee. At evening
+sitting and reading in the park. Time has stopped here 100 years ago at some places.
+Count you will not meet girls or laddies at night as they stay at home. 
+At old cities no bars or clubs are open. Especially not at late night. 
+Mens on the other has it's own places to go night, drinking coffee, raki or watch football at TV together.
+
+There is one exception "Tirana" to all of these. It's like another big city. Albanians young goes to Tirana to study, meet girls
+and have a fun.
+
+== Dures
+
+Frequent destination offered by agencies. Except the "city rush" and the bar and restaurants on the coast we have not found anything
+interesting.
+
+== Berat
+
+On a way to there you may fruits, etc. around the main street. Buy some, people are friendly and you will enjoy it.
+
+Old town. Cristians and Muslim part splitted by the river with two nice bridges. Ruins of Castle and accomodation on the tall
+hill with beautifull viewpoints. Especially at night. Book your room for a night here and go out for a splendid dinner.
+
+When we left berat we visited small viewyard XYZ.
+
+
+== Riviera
+
+On a way down, exit the main road and visit small villages. It's a great experience.
+Riviera is the nice place with pure watter and nice coastline. You will be driving the hills and beaches. While Vlore, Dures
+and Sarrande are well known localits. The raw nice places between Vlore and Sarrande are in recent years still discovered by
+NATIVES.
+
+== Vlore
+Bigger coast city, nice beach and parks around. Next to Tirana I would guess you will enven find a nightlife here.
+
+== Q...
+
+Beach
+
+== Borsc
+
+Castel
+Nice valley
+
+
+== Piceras
+
+Small village with atmosphere.
+Nice beach on the coast.
+
+== Sarrande
+
+Smaller city. Nothing to see in center. But great accomodation/food services and check the pictures from beach.
+
+Close to Sarrande is a most frequently visited place for tourists. Worth to see but don't expect nothing more than runs.
+Small museum was however nice suprise. NADECH HISTORIE, Nice viewpoints. No surprise this place was favorited by Romans.
+
+== Gjirokaster
+
+To Gjirokaster you will follow the big rivver "Vosel". The last raw and wild river in Europe.
+
+We drove directly to "old" part. Up the hill for accomodation. You want stay here for a day and night.
+
+Best place to stay is Kobra or XYZ if you are here with your girlfriend or wife. Kobra is definitivelly best viewpoint and
+nice place for dinner or coffe. But you will find many other places for a dinner with superb atmosphere all around. 
+Cheeper option to stay over night are hostels or rooms in the old town. We did it and we liked it as it was not the "europe"
+styled but typical Albanian place.
+
+== Kruje
+
+As we had no free day we drove directly to Kruje. First it's doable (a long way). Second Elbasan on the road we have not
+found iteresting. The other directions to north (Korce, Mountains) would took too long.
+
+Kruje is close to Tirana. A city on a hill. You will see Tirana and Dures on the night. 
+
+This was the most expensive place - we stayed at Panorama hotel as we arrived late and were lazy to find something. 
+I would recomend you to choose some other place here with some more local atmosphere. 
+
+This city is unique. Worth to see even for a few hours.
+
+Museum, Etnological museum, food !!
+
+== Tirana
+
+Main city, you already know what to expect, nothing special to see. Go out and enjoy night life and food.
+
+Park + mather of Albania
+
+== On the next trip to Albania
+
+- Riviera and best places we seen with Family
+- Pogradec
+- Skor....
+- For next man's trip
+  - Mountains
+  - Offroads
+  - 2x 3day track (one in car)
+  - May be rafting
+
+== Links
+
+Salt NACL is based on another SaltStack project https://github.com/saltstack/libnacl[libnacl], an wrapper for https://github.com/jedisct1/libsodium[libsodium] and
+Salt nacl resources (https://github.com/saltstack/salt/blob/develop/salt/moduels/nacl.py[module], https://github.com/saltstack/salt/blob/develop/salt/runners/nacl.py[runner], https://github.com/saltstack/salt/blob/develop/salt/renderers/nacl.py[renderer] and https://github.com/saltstack/salt/blob/develop/salt/pillar/nacl.py[ext_pillar]).
+

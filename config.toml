@@ -8,18 +8,22 @@ paginate        = 20
 canonifyurls    = true
 
 
+google_analytics = "UA-71675144-1"
 
 [params]
     header_title     = "make me : APe"
     site_author      = "Petr Michalec"
     site_description = "APe's blog ~ #family, #tech, #photography, #DevOps, #Cloud, #Chef, #RC planes"
     location         = "Brandys nad Labem - Stara Boleslav"
-
     copyright        = "(C) APe, Powered by [Hugo](http://gohugo.io)."
     google_analytics = "UA-71675144-1"
 
     header_background= "img/ZenBG.png"
     avatar           = "img/profile-image.png"
+
+    # Add custom assets with their paths relative to the static folder
+    custom_css  = ['css/asciidoctor.css', 'css/apealive.css']
+    custom_js   = []
 
 
 

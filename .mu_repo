@@ -1,0 +1,10 @@
+repo=.
+repo=styles/asciidoctor-stylesheet-factory
+repo=themes/hugo-bootstrap-premium
+repo=themes/hugo-future-imperfect
+repo=themes/hugo-minimalist-theme
+repo=themes/hugo-nuo
+repo=themes/hugo-remark-minion
+repo=themes/hugo-strata-theme
+repo=themes/hugo-theme-docdock
+serial=True

@@ -8,13 +8,9 @@ disable = ['comments','share']
 
 *<a href="https://goo.gl/photos/e56EUzqnLjJUJxHq5" target="_blank">APe</a> je maskot naší rodiny. Dobře profláknutý mezi našimi kamarády pro své kousky. Občas ho ztratíme, takže docela dost cestuje...*
 
-<!--[Adriana]({{< ref "about_adriana.md" >}})
--->
-My, Adriana a [Petr]({{< ref "about_petr.md" >}}), bydlíme v Brandýse nad Labem - Staré Boleslavi spolu s Mikulášem (2012) a Štěpánem (2014).
+My, Adriana a [Petr]({{< ref "about_petr.md" >}}), bydlíme v Brandýse nad Labem - Staré Boleslavi spolu s Mikulášem (2012), Štěpánem (2014) a Rozárkou (2016).
 
 Rádi naplňujeme volný čas sportem, cestami za zážitky , dobrým kafem, vínem, italskou pizzou a dětmi, dětmi, dětmi. V roce 2009, na začátku ekonomické krize jsme si vzali rok pracovního volna a odjeli jsme cestovat na Nový Zaeland, Austrálii, Samou a Cook Islands. V poslední době jsme se obrátili na Paleo a dobrou kondici. Chlebem Vás tedy nepohostíme, to už raději otevřeme láhev dobrého vína.
-
-Tyhle stránky jsme tvoříme jako deník pro nás a naše děti. *(aneb na iCloud není vše)*
 
 APe
 
