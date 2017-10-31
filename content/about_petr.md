@@ -10,8 +10,8 @@ disable = ['comments']
 
 A Developer. ExIBMer. Vi(m) lover. DevOps and Opensorce devoted.
 Performing cloud infrastructure and application architecture with passion for the edge thing.
-If you wanna reach me use Keybase, Twitter or any in place notification on a service we met.
-(Don't count I read emails or answer cell phones)
+If you wanna reach me use Keybase, Twitter or usually an native notification on a service both of us use.
+(Don't count I read emails in {{ now.Format "2017" }})
 
 ## Contact
 
