@@ -16,13 +16,21 @@
         <link rel="icon" href="{{ "favicon.ico" | absURL }}">
         <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}" />
         <link rel="stylesheet" href="{{ "css/highlightjs/atom-one-dark.css" | absURL}}">
-        <script src="{{ "js/vendor/modernizr-2.8.0.min.js" | absURL }}"></script>
 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.0/modernizr.min.js"></script>
         <script>
             $('#expand').click(function(){
-                $('aside').toggle(400);
+                $(.author).addClass('hide');
+                $(.author).toggle(400);
+                $(.author).hide();
+                /*
+                   https://www.w3schools.com/jquery/jquery_selectors.asp
+                */
             });
+
         </script>
+
         <style>
         .site-header h2 .logo {
         background: url({{ .Site.Params.header_background | absURL }}) repeat 0 0;

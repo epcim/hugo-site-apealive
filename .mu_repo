@@ -7,4 +7,5 @@ repo=themes/hugo-nuo
 repo=themes/hugo-remark-minion
 repo=themes/hugo-strata-theme
 repo=themes/hugo-theme-docdock
+repo=workspace/hugo-easy-gallery
 serial=True
