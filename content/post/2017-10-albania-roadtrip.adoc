@@ -1,6 +1,6 @@
 +++
 date = "2017-10-22T01:01:01+02:00"
-draft = true
+draft = false
 title = "Albania 2017"
 #slug = "salt-nacl-ext-pillar"
 tags = ["blog", "travel", "roadtrip", "albania", "vacation"]
@@ -38,12 +38,12 @@ Travelers:
 * Petr Michalec
 * Radovan Svaty
 
-Radovan found a nice tickets from Budapest for 23000Ft (however if you instead of buying them two months before the flight
-you may get even better price \~40e for a return trip including baggage). So we have driven a car from the Czech Republic and
+Radovan found a nice tickets from Budapest for 23000Ft which is about 180 euro (however if you instead of buying them two months before the flight
+you may get even "better" price around 40 euro for a return trip including baggage). So we have driven a car from the Czech Republic and
 left the car on a Parking slot for about 20e. The other option is to fly to Corfu and take a ship.
 
 === Weather
-Weather conditions were quite generous to us as during the day was average 24stp, with max 28. On the evening/night 12-15.
+Weather conditions were quite generous to us as during the day was average 24 degrees, with max 28 degrees. On the evening/night 12-15.
 Usually, it starts to rain at the beginning of October, but not this time. Long pants and a jacket for a night is a good option.
 (Notable to mention Albanians wear long pants and even sweater so tourists in shorts look different.)
 
@@ -51,7 +51,7 @@ Usually, it starts to rain at the beginning of October, but not this time. Long 
 We booked a car before the flight at Enterprise. Unless you go to Albania to the Riviera/coastline or you know you will only stay on the main roads, don't rent a small car. Roads
 are fine on main ways, but any city/smaller road you will meet pot holes or stones.
 Worth to mention that for 4x4 "Suzuki Vitara" category we booked we were first offered
-Fiat500. Finally, we got Duster, but simple tires and pretty bad condition (seems like bee flooded a week).
+Fiat 500. Finally, we got Duster, but simple tires and pretty bad condition (seems like bee flooded a week).
 If you want to go for mountains, dirty off-road make sure you buy the real offroad car and you have it confirmed first.
 For short trips on main highways, I would by a car at the airport or Tirana so you can get a better price and you can choose
 what's available from multiple companies.
@@ -63,24 +63,34 @@ with GPS offline map we had no issues to navigate to the destination.
 This country is amazing. The petrol stations are everywhere as frequent as small old bunkers from the 2nd world war.
 In average there were always four petrol stations within 3km. Almost seems it's a family business here.
 
+The best experience ever was food, services, and great coffee on every corner.
+
 === Itinerary
+
 The itinerary was set on the way. We have had just main points. Finally, we choose to go from
 Tirana to Durres first day,
-then to Betrat for the second,
+then to Berat for the second,
 the third day we spend mostly driving the riviera to Borsc.
 Then we have moved to Saranda, Gjirokaster and finally Kruje \~30km above the Tirana.
 Last day we spent in Tirana.
 
 === Prices
+
 Prices were nice. In general three times cheaper or equal to the Czech Republic at finest places.
-Accommodation in average 20e for all of us.
+Accommodation in average 25 euro/night/room for all of us. Food is excellent and prices are more than happy, we frequently
+got an appetizer just because we have made a bug lunch or dinner. 
+
+For coffee drinkers, Albania is a dream place to visit. We frequently found Albanians understand Italian language and connection
+to Italy don't end-up with watching TV shows or sharing a sea border. They love coffee and they know how to make t a good
+way. We were drinking excellent coffee on every corner in every district we visited. While the avarage price was 20 Leku, 
+the price in non tourists areas was just 10 Leku. And btw one of the best I have had at the airport gas station.
 
 === Internet
+
 The Internet is everywhere but for some stupid reason, telco companies, has this Europe touching country (Greece, 30km to Italy and even less
 to Corfu) on a list of II. zone so calls, SMS and data are not worth the price. No worry, from Borsc to south you will be
 able to connect to EU cell network on Corfu.
 
-The best experience ever was food, services, and great coffee on every corner.
 
 == Places we visited
 
@@ -115,9 +125,10 @@ Riviera is the nice place with pure water and nice coastline. You will be drivin
 NATIVES.
 
 == Vlore
+
 Bigger coast city, nice beach, and parks around. Next to Tirana, I would guess you may even find a nightlife here.
 
-== Q...
+== Qeparo
 
 Beach
 
@@ -140,6 +151,8 @@ Close to Sarrande is a most frequently visited place for tourists. Worth to see 
 A small museum was, however, a nice surprise. NADECH HISTORIE, Nice viewpoints. No surprise this place was favorited by Romans.
 
 == Gjirokaster
+
+UNESCO old town surrounded by mountains. Famous for roofs made from stone.
 
 To Gjirokaster you will follow the big river "Vosel". The last raw and wild river in Europe.
 
@@ -168,21 +181,28 @@ Museum, Ethnological Museum, food !!
 
 The main city, you already know what to expect, nothing special to see. Go out and enjoy nightlife and food.
 
-Park + mather of Albania
+Well while the whole country is quite conservative, regarding nightlife in Tirana it's total opposite. Young people comes
+here for study and to have a fun. People live here the same as in the other Europe cities. That's good and bad at the same
+time but after a week of literally quite evenings we have found the concert on the main square the perfect "dot" for our
+travel.
+
+Btw, the main square has kind of architectural anomaly as it's made inflated rather than flat.
+
+Nice place we visited except the common sight-seeing spots was a Park and a restaurant corner close to the statute of called
+"mother of Albania".
 
 == On the next trip to Albania
 
 - Riviera and best places we saw with Family
 - Pogradec
-- Skor....
-- For next man's trip
+- Shkorder
+- For next "man's" trip
   - Mountains
   - Offroads
-  - 2x 3day track (one in car)
-  - May be rafting
+  - 2x 3day track (while one in car)
+  - Rafting
 
-== Links (PRIKLAD) Format zapisu
+== Photos
 
-Salt NACL is based on another SaltStack project https://github.com/saltstack/libnacl[libnacl], an wrapper for https://github.com/jedisct1/libsodium[libsodium].
-
-
+{{< gallery dir="/media/post/2017/Albania" />}}
+{{< load-photoswipe >}}

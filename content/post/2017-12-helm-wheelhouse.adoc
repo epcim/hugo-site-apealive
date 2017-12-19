@@ -1,0 +1,394 @@
++++
+date = "2017-12-14T12:01:07+02:00"
+draft = false
+title = "Helm Charts, Wheelhouse PoC"
+slug = "helm-charts-wheelhouse"
+tags = ["blog", "kubernetes", "helm", "chart", "wheelhouse", "k8s"]
++++
+
+:source-highlighter: coderay
+
+[.lead]
+Flexible way to standardize a way to perform configuration management in the Helm chart's.
+
+We uses years Salt, Chef, Ansible, ... to do complex configuration steps, but when it came
+to implement a new feature in Helm Chart app folks once again tend to fall back to bash, curl
+and the Helm hell templates.
+
+
+== TL;DR
+
+My use-case is simple. I want to update https://github.com/Mirantis/k8s-apps/tree/master/charts/influxdb[Influxdb chart].
+and provide way to:
+
+* create database
+* configure users
+* access right's
+* continuous_queries
+* retention policies
+
+Quite common stuff when using influxdb. Additionally any lifecycle will need scheduled cron job to prune data etc. which
+is nothing else then kind of `query` to the backend.
+
+Common use-case, but what a surprise the Chart did not had these implemented. Not even upstream one.
+(well google upstream has users + rights but still I was not satisfied.)
+
+Wait, in general these and similar functions we already implemented under "Salt/Chef" tools years ago.
+miss as well. There must be a huge gap in functions available in what other charts as well.
+
+<!--more-->
+
+== Problem
+
+First understand the facts:
+
+* Containers are good for isolation, high density, ...
+* Docker runtime is good for standardized interface to containers
+* Kubernetes is fitted for running large scale clustered production
+* Helm is good for packaging and release management of the k8s apps
+
+None of the above is know good for configuration management. And even they do declarative, atomic and reusable.
+They fail to be imperative when executing interaction and enforcing required state.
+
+What I propose is to standardize bit a way we do "things" in the charts. And for carefull reader, the article is also about
+standardization of the metadata that are used to configure chart, cookbook, formula and what ever will come next.
+
+Obviously we can recognise these kind of tasks:
+
+1. Server side application configuration, templates, system setup
+2. Client side executions, api calls
+3. Other maintenance procedures
+
+And you probably wish to integrate with external resources as well.
+
+* write your actions declarative way rather than ``bash+curl``, for example checking whether to ``CREATE`` or ``ALTER`` you may use
+``influxdb_continuous_query.present`` state with an easy syntax prone errors.
+* get and use realt-time setup from external systems (Vault, etcd, ....) (not just what you have in configMap)
+
+How the integration could work?
+
+* a side container to execute client side calls (like API)
+* extend you application image with the config layer (example: Salt + desired formulas).
+
+In the chart:
+
+* load configMap configuration files from formulas/cookbooks rather then from chart
+* use in-build features of side-container configuration management tool to execute actions
+* ...
+
+The first point will be even more clear if you will have a look how we treat "client"
+https://salt-formulas.readthedocs.io/en/latest/intro/metadata-patterns.html#service-formula-roles[roles] in the
+https://github.com/salt-formulas[salt-formulas] project. This is usually worth during chart ``post-init,post-upgrade`` hook jobs and
+cronjobs.
+
+The second may help provide some help while configuring the application. To be clear, we are not interested in replacing
+existing chart app templates written in gotpl or fully reuse the existing features of 3rd party configuration management.
+
+What I am looking instead is simplification of small common tasks like system configuration, checks, ops in declarative way.
+
+
+== Wheelhouse
+So what is the way that don't reinvent the wheel?
+
+I propose extend ``values.yaml`` with simple structure like this:
+
+[source, yaml]
+.values.yaml
+----
+# Invoking external configuration management tools to provide a particular feature set
+*wheelhouse*:
+  engine: salt
+  image:  tcpcloud/salt-formulas:latest
+
+  # Shared metadata, pillars, variables, attributes, data_bag
+  *pillar:* {}
+
+  # Listing of individual actions
+  *wheel:*
+    dummy_job_name: {}
+      # Free structure to compose execution logic that fit the engine used.
+----
+
+
+I provide simple implementation of ``job-initdb.yaml`` that uses this structure to setup influxdb database
+and it's configuration.
+
+=== Engine
+
+My "DevOps kung-fu" has Salt taste, so in the examples below I will use SaltStack Salt as configuration management.
+
+In order to make the Helm Chart code even shorter, I pass whole ``wheelhouse`` yaml structure to
+https://github.com/epcim/wheelhouse/blob/master/wheelhouse.py[wheelhouse.py] that implements
+necessary loops and Salt client calls.
+
+At the end the only required logic to execute it, takes just a four lines of code. (An cherry-pic of 'init' job that will run
+all 'wheels' specified.)
+
+[source, yaml]
+.job-initdb.yaml
+----
+      ....
+      containers:
+      - name: influx-wheel-job-{{ $job_name }}
+        image: {{ .Values.image }}
+        env:
+         - name: INFLUXDB_HOST
+           value: {{ template "influx-fullname" $ }}
+        args:
+          - "PYTHON_PATH=$PYTHON_PATH:/ python /wheelhouse.py"
+          - "-c"
+          - |
+            recipe = {'jobs': ['init']}
+            config = {{ toJson .Values.wheelhouse }}
+            wheel = WheelSalt(config, recipe=recipe)
+            wheel.runner()
+      ....
+----
+
+
+=== Image
+
+The image I use for container is multipurpose ubuntu + our salt-formulas compilation:
+https://hub.docker.com/r/tcpcloud/salt-formulas/
+
+For any serious work I would consider make it much smaller and possibly use some features of
+https://github.com/akatrevorjay/salty-whales which I tend to use for Salt formula testing.
+
+=== Pillar
+
+Quite sure, if you will use Salt engine you will want to structure your chart pillar the exactly same way as you structure
+your metadata for salt formulas. This step will help to standardize metadata structure cross your environment.
+
+NOTE: Literary we have failed in metadata management. Chef, Ansible, Salt, Habitat have different metadata structure.
+      That's not bad, that's how inventions comes. Pain in the ass infact is that if we started write helm chart's we
+      ignored these metadata at all and started to structure chart ``values.yaml`` once again from scratch without any
+      standardization or validation schema.
+
+Hmm, it's an side topic. The above actually is not true for the https://github.com/salt-formulas[salt-formulas] project.
+The `metadata` structure are the first place and even note everything is perfect recent features we added move us forward.
+First of all, we keep separated metadata for roles `client`, `server`. We isolate `service` related metadat to `system`
+related. And for the sake of the thing we also keep the deployment level overrides, that we call `cluster`.
+
+Links:
+* https://github.com/Mirantis/reclass-system-salt-model[system-level] shared metadata (production ready) *!!*
+* https://github.com/salt-formulas/salt-formula-salt/tree/master/metadata/service[service-level] metadata
+
+For my use-case the pillar structure is 1:1 what my influxdb https://github.com/salt-formulas/salt-formula-influxdb[formula]
+needs to setup database an configure.
+
+[source, yaml]
+.values.yaml
+----
+  wheelhouse:
+    pillar:
+      influxdb:
+        client:
+          enabled: true
+          server:
+            protocol: http
+            host: ${INFLUXDB_HOST}
+            port: 8086
+            user: admin
+            password: password
+          user:
+            fluentd:
+              name: fluentd
+              password: password
+              enabled: true
+          database:
+              1:
+                name: new_year
+                enabled: true
+                retention_policy:
+                  - name: a_year
+                    duration: 52w
+                    replication: 1
+                    is_default: true
+----
+
+=== Wheel and Jobs sections.
+
+Wheel section in the ``wheelhouse:wheel`` structure is "free of choice" that fit's the engine used. While it must keep
+this minimal schema:
+
+[source, yaml]
+.values.yaml
+----
+    wheelhouse:
+        wheel:
+          <wheel_name>: {}
+----
+
+And for salt it's I extend:
+
+[source, yaml]
+.values.yaml
+----
+    wheelhouse:
+        wheel:
+          <wheel_name>:
+             <state|module function>:
+                - <args>
+             ...
+             state.apply:
+                < raw sls file written in yaml >
+----
+
+The Job section on the other hand is to associate individual `wheels` to unit's that you wish to execute, as for example part
+of the `job-initdb.yml` post-install container. As we tent to keep wheels simple, the `jobs` holds the additional metadata.
+
+[source, yaml]
+.values.yaml
+----
+    wheelhouse:
+      jobs:
+        <job_name>:
+          recipe:
+            - <wheel_name>
+            - <wheel_name2>
+          logging:
+            severity: info
+----
+
+Again, for Salt may imagine to extend that for example as:
+
+[source, yaml]
+.values.yaml
+----
+    wheelhouse:
+      jobs:
+        <job_name>:
+          config:
+            salt:
+              minion: {}
+----
+
+== Full example
+
+[source, yaml]
+.values.yaml
+----
+  wheelhouse:
+    enabled: true
+    engine: salt
+    image:  tcpcloud/salt-formulas
+    # Individual task specification
+    jobs:
+      initjob:
+        wheels:
+          - client
+        logging:
+          severity: debug
+      cronjob:
+        wheels:
+          - minion_influxdb_config
+          - prune_measurement
+
+    pillar:
+      influxdb:
+        client:
+          enabled: true
+          server:
+            protocol: http
+            host: ${INFLUXDB_HOST}
+            port: 8086
+            user: admin
+            password: password
+          user:
+            fluentd:
+              name: fluentd
+              password: password
+              enabled: true
+          database:
+              initialdb:
+                enabled: true
+                name: initialdb
+                retention_policy:
+                  - name: a_year
+                    duration: 52w
+                    replication: 1
+                    is_default: true
+                query:
+                  delete_h2o_quality_rt3: >-
+                    DELETE FROM "h2o_quality" WHERE "randtag" = '3'
+      # This section is only needed if I want to use influx module/state directly
+      salt:
+        minion:
+            config:
+              influxdb:
+                host: localhost
+                port: 8086
+
+    wheel:
+      client:
+        state.apply:
+          - influxdb.client
+      prune_measurement:
+        state.sls_id:
+          - delete_h2o_quality_rt3
+          - influxdb.query
+      minion_influxdb_config:
+        state.apply:
+          /etc/salt/minion:
+            file.serialize:
+            - dataset_pillar:  salt:minion:config
+            - formatter:       yaml
+            - merge_if_exists: True
+            - makedirs: True
+----
+
+Finally, my use-case is actually already satisfied by this snippet you may find in the above example:
+
+[source, yaml]
+.values.yaml
+----
+    wheel:
+      client:
+        state.apply:
+          - influxdb.client
+----
+
+Which when called over job "init", does exactly what I specified on ``wheelhouse:pillar:influxdb:client``.
+
+I have my full PR to influxdb chart here: https://github.com/Mirantis/k8s-apps/pull/12
+
+== Testing
+
+The external configuration management, state and it's pillar structures can be easily tested by:
+
+[source, shell]
+----
+  git clone https://github.com/epcim/wheelhouse
+  docker run -v $PWD/wheelhouse:/wheelhouse -ti tcpcloud/salt-formulas:latest /bin/bash
+  /wheelhouse/wheelhouse.py
+----
+
+
+== Summary
+
+We have spend years by tuning configuration management tools. So they have today kind of state of art:
+
+  * templates
+  * metadata structures
+  * functions
+  * integrations
+  * tests
+
+While on-boarding an K8s word we were never expected to throw away this "golden egg" and start from scratch. I don't say
+upstream charts are wrong or ugly. I don't blame gotpl and Helm at all.
+
+I am disappointed if I see application configs as "templates" smashed in ``deployment/configmap.yaml``. Sure it has some
+good reasoning but I would frequently rather provide core metadata in ``values.yaml`` and render the template I use for 80%
+of my other environments.
+
+What the hell, we did defined helm chart ``.Values`` structures from scratch even we have had quite good examples in
+Chef and SaltStack, Salt-Formulas, Ansible metadata/attributes structures.
+
+It's pain to see `gotpl` without many common things implemented and lacking the flexibility of Erb or Jinja.
+
+
+NOTE: We can't quickly rewrite all charts. But we can slowly start ussing ``wheelhouse`` structure on values to do things the
+      "standardized" way.
+
+Any comments are warmly welcome!
+
