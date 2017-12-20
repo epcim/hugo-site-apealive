@@ -127,22 +127,36 @@ all 'wheels' specified.)
 [source, yaml]
 .job-initdb.yaml
 ----
-      ....
       containers:
       - name: influx-wheel-job-{{ $job_name }}
         image: {{ .Values.image }}
+        volumeMounts:
+        - name: wheelhouse-salt
+          mountPath: /wh
         env:
+         - name: PYTHONPATH
+           value: /wh:$PYTHONPATH
          - name: INFLUXDB_HOST
            value: {{ template "influx-fullname" $ }}
+        command:
+          - "bash"
+          - "-cx"
         args:
-          - "PYTHON_PATH=$PYTHON_PATH:/ python /wheelhouse.py"
-          - "-c"
           - |
-            recipe = {'jobs': ['init']}
-            config = {{ toJson .Values.wheelhouse }}
-            wheel = WheelSalt(config, recipe=recipe)
-            wheel.runner()
-      ....
+            /usr/bin/python <<-EOF
+            import os
+            import ruamel.yaml
+            from string import Template
+            import wheelhouse
+
+            config = ruamel.yaml.YAML().load(Template('''\
+{{ toYaml $wh |indent 15 }}
+            ''').substitute(os.environ))
+
+            recipe = ['initdb']
+            wheelhouse.SaltWheel(config, recipe=recipe).runner()
+            EOF
+
 ----
 
 
@@ -188,7 +202,7 @@ needs to setup database an configure.
           enabled: true
           server:
             protocol: http
-            host: ${INFLUXDB_HOST}
+            host: $INFLUXDB_HOST
             port: 8086
             user: admin
             password: password
@@ -236,14 +250,14 @@ And for salt it's I extend:
                 < raw sls file written in yaml >
 ----
 
-The Job section on the other hand is to associate individual `wheels` to unit's that you wish to execute, as for example part
-of the `job-initdb.yml` post-install container. As we tent to keep wheels simple, the `jobs` holds the additional metadata.
+The Job section on the other hand is to associate individual `wheel` to unit's that you wish to execute, as for example part
+of the `job-initdb.yml` post-install container. As we tent to keep wheels simple, the `job` holds the additional metadata.
 
 [source, yaml]
 .values.yaml
 ----
     wheelhouse:
-      jobs:
+      job:
         <job_name>:
           recipe:
             - <wheel_name>
@@ -261,7 +275,7 @@ Again, for Salt may imagine to extend that for example as:
 .values.yaml
 ----
     wheelhouse:
-      jobs:
+      job:
         <job_name>:
           config:
             salt:
@@ -278,14 +292,14 @@ Again, for Salt may imagine to extend that for example as:
     engine: salt
     image:  tcpcloud/salt-formulas
     # Individual task specification
-    jobs:
-      initjob:
-        wheels:
+    job:
+      initdb:
+        wheel:
           - client
         logging:
           severity: debug
       cronjob:
-        wheels:
+        wheel:
           - minion_influxdb_config
           - prune_measurement
 
@@ -295,7 +309,7 @@ Again, for Salt may imagine to extend that for example as:
           enabled: true
           server:
             protocol: http
-            host: ${INFLUXDB_HOST}
+            host: $INFLUXDB_HOST
             port: 8086
             user: admin
             password: password
