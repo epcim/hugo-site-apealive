@@ -202,7 +202,10 @@ Nice place we visited except the common sight-seeing spots was a Park and a rest
   - 2x 3day track (while one in car)
   - Rafting
 
-== Photos
+== Photo gallery
 
-{{< gallery dir="/media/post/2017/Albania" />}}
+TIP: Full gallery you may find on my
+      https://photos.google.com/u/1/share/AF1QipOkF_YX0t3MN1YH7KoxtOijnPLqaMVQnH6wdlnLBiyJAcMieFSzAS1Q2JoFMQVR1Q?key=R0xtMm55M0lIaXhnRG5rR3Bmel9tUEh6OGdYYnVB[Google Photos].
+
+{{< gallery dir="/media/post/2017/Albania" caption-position="none" />}}
 {{< load-photoswipe >}}

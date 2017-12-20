@@ -65,7 +65,7 @@ And you probably wish to integrate with external resources as well.
 ``influxdb_continuous_query.present`` state with an easy syntax prone errors.
 * get and use realt-time setup from external systems (Vault, etcd, ....) (not just what you have in configMap)
 
-How the integration could work?
+=== How the integration could work?
 
 * a side container to execute client side calls (like API)
 * extend you application image with the config layer (example: Salt + desired formulas).
@@ -170,7 +170,9 @@ First of all, we keep separated metadata for roles `client`, `server`. We isolat
 related. And for the sake of the thing we also keep the deployment level overrides, that we call `cluster`.
 
 Links:
+
 * https://github.com/Mirantis/reclass-system-salt-model[system-level] shared metadata (production ready) *!!*
+
 * https://github.com/salt-formulas/salt-formula-salt/tree/master/metadata/service[service-level] metadata
 
 For my use-case the pillar structure is 1:1 what my influxdb https://github.com/salt-formulas/salt-formula-influxdb[formula]
@@ -249,6 +251,9 @@ of the `job-initdb.yml` post-install container. As we tent to keep wheels simple
           logging:
             severity: info
 ----
+
+NOTE: I still bit fight with this jobs structure as I don't fully accept it as it looks like today. But that's the purpose of
+      this article, PoC and start an discussion for a best reusable structure.
 
 Again, for Salt may imagine to extend that for example as:
 
@@ -352,7 +357,7 @@ Which when called over job "init", does exactly what I specified on ``wheelhouse
 
 I have my full PR to influxdb chart here: https://github.com/Mirantis/k8s-apps/pull/12
 
-== Testing
+== Testing && make your hands dirty
 
 The external configuration management, state and it's pillar structures can be easily tested by:
 
@@ -366,7 +371,8 @@ The external configuration management, state and it's pillar structures can be e
 
 == Summary
 
-We have spend years by tuning configuration management tools. So they have today kind of state of art:
+We have spend years by tuning configuration management tools.
+So if you were working hard they have now state of art:
 
   * templates
   * metadata structures
@@ -386,9 +392,8 @@ Chef and SaltStack, Salt-Formulas, Ansible metadata/attributes structures.
 
 It's pain to see `gotpl` without many common things implemented and lacking the flexibility of Erb or Jinja.
 
-
-NOTE: We can't quickly rewrite all charts. But we can slowly start ussing ``wheelhouse`` structure on values to do things the
+NOTE: We can't quickly rewrite all charts. But we can slowly start using ``wheelhouse`` structure on values to do things the
       "standardized" way.
 
-Any comments are warmly welcome!
+Any comments and ideas are warmly welcome!
 

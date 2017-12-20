@@ -21,12 +21,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.0/modernizr.min.js"></script>
         <script>
             $('#expand').click(function(){
-                $(.author).addClass('hide');
-                $(.author).toggle(400);
-                $(.author).hide();
-                /*
-                   https://www.w3schools.com/jquery/jquery_selectors.asp
-                */
+               $(aside).toggle(400);
+               $(main).addClass('author-article-view');
             });
 
         </script>
