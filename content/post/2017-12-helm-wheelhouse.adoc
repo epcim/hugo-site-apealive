@@ -1,7 +1,7 @@
 +++
 date = "2017-12-14T12:01:07+02:00"
 draft = false
-title = "Helm Charts, Wheelhouse PoC"
+title = "Salt water to Helm Chart's wheels"
 slug = "helm-charts-wheelhouse"
 tags = ["blog", "kubernetes", "helm", "chart", "wheelhouse", "k8s"]
 +++
