@@ -6,8 +6,6 @@ title = "Albania 2017"
 tags = ["blog", "travel", "roadtrip", "albania", "vacation"]
 +++
 
-:source-highlighter: coderay
-
 [.lead]
 Three mens, one free week, roadtrip in Albania. Tirana, riviera, south and finally the transit Budapest.
 

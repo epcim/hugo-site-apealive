@@ -6,7 +6,7 @@ title = "Salt NACL encryption for external pillars"
 tags = ["blog", "salt", "devops", "nacl", "reclass"]
 +++
 
-:source-highlighter: coderay
+:source-highlighter: highlight
 
 [.lead]
 This article is about encrypting Satl external pillars with NACL.

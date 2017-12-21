@@ -1,15 +1,16 @@
 +++
 date = "2017-12-14T12:01:07+02:00"
 draft = false
-title = "Salt water to Helm Chart's wheels"
+title = "Salt water to Helm Chart's wheel"
 slug = "helm-charts-wheelhouse"
 tags = ["blog", "kubernetes", "helm", "chart", "wheelhouse", "k8s"]
 +++
 
-:source-highlighter: coderay
+:source-highlighter: highlight
+:coderay-linenums-mode: inline
 
 [.lead]
-Flexible way to standardize a way to perform configuration management in the Helm chart's.
+Flexible way to perform configuration management actions in the Helm chart's.
 
 We uses years Salt, Chef, Ansible, ... to do complex configuration steps, but when it came
 to implement a new feature in Helm Chart app folks once again tend to fall back to bash, curl
@@ -92,7 +93,7 @@ So what is the way that don't reinvent the wheel?
 
 I propose extend ``values.yaml`` with simple structure like this:
 
-[source, yaml]
+[source, YAML]
 .values.yaml
 ----
 # Invoking external configuration management tools to provide a particular feature set
