@@ -1,0 +1,13 @@
++++
+date = "2018-03-01T12:01:07+02:00"
+draft = true
+title = "Salt-Formulas updates"
+tags = ["salt", "formulas", "salt-formulas"]
++++
+
+Sum up all features on salt-formulas project.
+
+
+<!--more-->
+
+# vim: filetype=markdown

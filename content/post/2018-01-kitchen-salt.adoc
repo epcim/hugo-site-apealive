@@ -1,0 +1,34 @@
++++
+date = "2018-01-14T12:01:07+02:00"
+draft = true
+title = "Advanced testing of salt formulas and models"
+slug = "salt-formula-testing-kitchen-salt-2"
+tags = ["blog", "salt", "devops", "kitchen-salt", "test-kitchen", "kitchen-test", "inspec"]
++++
+
+
+= TL;DR
+
+[.lead]
+Advanced salt-formula testing, model testing and integration with containers.
+
+== Overview
+
+In this article I will talk about writing and testing https://github.com/salt-formulas[salt-formulas].
+An curated collection of formulas behind salt-formulas community. The concepts however will fit to any
+salt formula.
+
+Previous blogs with the same topic:
+
+* https://apealive.net/post/salt-formula-testing-kitchen-salt-1
+* https://apealive.net/tags/kitchen-salt
+
+<!--more-->
+
+== TODO
+
+* copy paste the integration testing
+* salt-formulas:develop usecase
+* link wheelhouse
+
+# vim: filetype=asciidoc

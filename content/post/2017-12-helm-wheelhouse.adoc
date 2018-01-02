@@ -7,7 +7,6 @@ tags = ["blog", "kubernetes", "helm", "chart", "wheelhouse", "k8s"]
 +++
 
 :source-highlighter: highlight
-:coderay-linenums-mode: inline
 
 [.lead]
 Flexible way to perform configuration management actions in the Helm chart's.
@@ -97,15 +96,15 @@ I propose extend ``values.yaml`` with simple structure like this:
 .values.yaml
 ----
 # Invoking external configuration management tools to provide a particular feature set
-*wheelhouse*:
+wheelhouse:
   engine: salt
   image:  tcpcloud/salt-formulas:latest
 
   # Shared metadata, pillars, variables, attributes, data_bag
-  *pillar:* {}
+  pillar: {}
 
   # Listing of individual actions
-  *wheel:*
+  wheel:
     dummy_job_name: {}
       # Free structure to compose execution logic that fit the engine used.
 ----

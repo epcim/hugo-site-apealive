@@ -1,0 +1,8 @@
++++
+date = "2018-02-01T12:01:07+02:00"
+draft = true
+title = "Roaster drone build"
+tags = ["blog", "drone", "quadcopter", "build"]
++++
+
+:source-highlighter: highlight

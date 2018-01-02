@@ -29,4 +29,10 @@ Chef vs. Salt for elsewhere:
 - https://z900collector.wordpress.com/linux/saltstack-using-grains/
 - https://z900collector.wordpress.com/linux/using-the-saltstack-mysql-module/
 
+* metadata better
+* slow development
+* modules in formulas vs. at one place
+* yaml vs. .rb
+* habitat?
+
 # vim: filetype=asciidoc

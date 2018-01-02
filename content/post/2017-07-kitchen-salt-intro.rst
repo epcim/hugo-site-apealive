@@ -1,8 +1,8 @@
 +++
 date = "2017-07-20T12:01:07+02:00"
-draft = true
+draft = false
 title = "Testing salt formulas and models with kitchen-salt"
-#slug = "kitchen-salt"
+slug = "salt-formula-testing-kitchen-salt-1"
 tags = ["blog", "salt", "devops", "kitchen-salt", "test-kitchen", "kitchen-test", "inspec"]
 +++
 
@@ -12,22 +12,23 @@ TL;DR
 
 An overview how to implement salt-formula test's with kitchen-salt.
 
-<!--more-->
 
 Overview
 ========
 
-In this article I will talk about writing and testing `salt-formulas <https://github.com/salt-formulas>_`.
+In this article I will talk about writing and testing https://github.com/salt-formulas[salt-formulas].
 An curated collection of formulas behind salt-formulas community. The concepts however will fit to any
 salt formula.
 
-If you are interested in `salt-formulas <https://github.com/salt-formulas>_` read more at:
-`readthedocs <https://salt-formulas.readthedocs.io/en/latest>_`.
+<!--more-->
 
-To test formulas we will use `kitchen-salt https://github.com/saltstack/kitchen-salt>_` framework.
+If you are interested in https://github.com/salt-formulas[salt-formulas] read more at:
+https://salt-formulas.readthedocs.io/en/latest>[readthedocs salt-formulas].
 
-This particular article extends already published documentation `salt-formulas/testing 
-<https://salt-formulas.readthedocs.io/en/latest/develop/index.html#testing>_` however
+To test formulas we will use https://github.com/saltstack/kitchen-salt[kitchen-salt] framework.
+
+This particular article extends already published documentation 
+https://salt-formulas.readthedocs.io/en/latest/develop/index.html#testing[salt-formulas/testing] however
 the additional posts will cover advanced configurations, latest features, verifiers as well as
 testing salt models/pillars.
 
@@ -426,7 +427,7 @@ Continous Integration with Travis
 ---------------------------------
 
 Salt-formulas uses Travis CI to run smoke and integration tests.
-To generate ``.travis.yml`` follow `Generate test structures in formula`_.
+Add ``.travis.yml``:
 
 Sample configs
 ^^^^^^^^^^^^^^
@@ -566,71 +567,12 @@ However this is later extended on Travis CI while using ``ENV`` variables in bui
 
 
 
+= Example forumlas
 
+* https://github.com/salt-formulas/salt-formula-salt[salt-formula-salt]
+* https://github.com/salt-formulas/salt-formula-nova[salt-formula-nova]
+* https://github.com/salt-formulas/salt-formula-linux[salt-formula-linux]
+* https://github.com/salt-formulas/salt-formula-reclass[salt-formula-reclass]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Kitchen spin an instance where salt-call is executed.
-https://github.com/saltstack/kitchen-salt/pull/158 (test infra)
-
-For more, explore it's rich
-`ecosystem <https://github.com/test-kitchen/test-kitchen/blob/master/ECOSYSTEM.md>`_ of supported drivers/provisioners/verifiers/...
-
-
-[source, yaml]
-.gpg-encrypted-pillar.yml
-  xyz
-
-FIXME https://github.com/salt-formulas/reclass[reclass].footnote:[Reclass - Recursive external node classifier for automation tools like Ansible, Puppet, and Salt.]
-FIXME https://github.com/salt-formulas/[salt-formulas].footnote:[Salt-Formulas - Community developed SaltStack formulas]
-FIXME https://github.com/salt-formulas/salt-formulas[salt-formulas repo] Documentation and tools to navigate and use the salt-formulas project
-
-bootstrap.sh
-https://github.com/salt-formulas/salt-formulas-scripts
-
-kitchen model testing
-https://github.com/salt-formulas/salt-formulas/tree/master/deploy/model
-
-NOTE: `/srv/salt/env/dev` is my `salt://` path.
-TIP: `/srv/salt/env/dev` is my `salt://` path.
-CAUTION: `/srv/salt/env/dev` is my `salt://` path.
-
-= Summary
-Finally a simple and robust solution for encrypted pillar values. (being said, well you can't encrypt keys or whole pillars yml's this way)
-
-
-= Other resources
-* https://docs.saltstack.com/en/develop/ref/modules/all/salt.modules.nacl.html
-* https://docs.saltstack.com/en/develop/ref/runners/all/salt.runners.nacl.html
 
 # vim: filetype=asciidoc

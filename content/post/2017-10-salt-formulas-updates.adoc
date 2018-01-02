@@ -1,9 +1,0 @@
-+++
-date = "2017-10-01T12:01:07+02:00"
-draft = true
-title = "Salt-Formulas recent updates"
-#slug = "salt-nacl-ext-pillar"
-tags = ["blog", "salt", "devops", "nacl", "reclass"]
-+++
-
-# vim: filetype=asciidoc
