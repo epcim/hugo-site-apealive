@@ -1,0 +1,461 @@
++++
+date = "2018-01-03T12:01:07+02:00"
+draft = true
+title = "SatlStack with new SaltClass ext_pillar"
+tags = ["blog", "salt", "saltclass", "reclass"]
++++
+
+:source-highlighter: highlight
+
+[.lead]
+Salt 2018.2 will be released with new external pillar engine https://github.com/saltstack/salt/pull/42349[SaltClass].
+It's actually rewrite of original “external node classifier” http://reclass.pantsfullofunix.net/[reclass] to salt core.
+
+<!--more-->
+
+== TL;DR
+
+With SaltClass, you still have power of original reclass:
+
+* Define your nodes through class inheritance
+
+but you you will get also much shorter (readable) code and couple of important features:
+
+* No longer you need special bootstrap to install reclass as dependency.
+* Use Jinja templating in your yaml definitions
+* Access to the following Salt objects in Jinja
+  - `\__opts__`
+  - `\__salt__`
+  - `\__grains__`
+  - `\__pillars__`
+  - minion_id
+* Chose how to merge or override your lists using ^ character
+* Expand variables ${} with possibility to escape them if needed \${}
+* Ignores missing node/class, without breaking the pillar module
+
+You may also compare them with the features of
+https://github.com/salt-formulas/reclass/blob/develop/README-extentions.rst[salt-formulas/reclass] fork that
+I use today.
+
+== Use case
+
+TODO: Purpose build repo for simple app.
+
+- orchestrated local docker something app
+(build locally a container, run it)
+webapp + influx?
+
+== Quick start
+
+I will use my purpose build container https://hub.docker.com/r/epcim/salt-formulas/tags/[epcim/salt-formulas] that support multiple salt versions, reclass, saltclass and has
+preinstalled https://github.com/salt-formulas/salt-formulas[Salt-Formulas].
+
+The tested model repository is TBD
+* simple app?
+* test all possible features?
+* example salt-formulas repo?
+
+[source, BASH]
+----
+docker run -h dontpanic -ti -v $PWD:/srv/salt/saltclass -w /srv/salt/saltclass epcim/salt-formulas:develop /bin/bash
+----
+
+
+== Example
+
+[source, shell]
+----
+root@dontpanic:/srv/salt/saltclass/classes# cat /etc/hosts
+127.0.0.1 salt
+----
+
+
+
+
+[source, YAML]
+.values.yaml
+----
+root@dontpanic:/srv/salt# tree -L 3
+.
+├── env
+│   └── base -> /usr/share/salt-formulas/env
+├── pillar
+├── reclass
+│   └─── classes
+│       ├── cluster
+│       ├── system
+│       └── service -> /usr/share/salt-formulas/reclass/service
+├── saltclass
+│   ├── README.adoc
+│   ├── classes
+│   │   ├── cluster
+│   │   ├── service -> /usr/share/salt-formulas/saltclass/service
+│   │   └── system
+│   └── nodes
+│       └── dontpanic.yml
+└── scripts
+    ├── bootstrap.sh
+    ├── formula-fetch.sh
+    └── salt-state-apply-trend.sh
+----
+
+
+
+
+[source, YAML]
+.values.yaml
+----
+root@dontpanic:/usr/lib/python2.7/dist-packages/salt# tail -n 30 /etc/salt/minion
+
+file_roots:
+  base:
+    - /srv/salt/env/base
+----
+
+
+
+
+
+
+[source, YAML]
+.values.yaml
+----
+root@dontpanic:/usr/lib/python2.7/dist-packages/salt# tail -n 30 /etc/salt/master
+
+ext_pillar:
+- saltclass:
+  - path: /srv/salt/saltclass
+
+master_tops:
+  saltclass:
+    path: /srv/salt/saltclass
+
+file_roots:
+  base:
+    - /srv/salt/env/base
+
+pillar_safe_render_error: False
+----
+
+
+
+
+
+
+[source, YAML]
+.values.yaml
+----
+service salt-server start
+salt-minion &
+----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[source, YAML]
+.values.yaml
+----
+
+root@dontpanic:/srv/salt/saltclass# cat nodes/dontpanic.yml
+environment: base
+classes:
+  - system.{{ __grains__['kernel'].lower() }}.system.single.{{ __grains__['os_family'].lower() }}
+  - cluster.lab
+
+pillars:
+  openssh:
+    server:
+      enabled: false
+  ntp:
+    server:
+      enabled: false
+  linux:
+    system:
+      name: dontpanic
+      user:
+        jdoe:
+          name: 'jdoe'
+          enabled: true
+          sudo: true
+          shell: /bin/bash
+          full_name: 'Jonh Doe'
+          home: '/home/jdoe'
+          email: 'jonh@doe.com'
+      os: {{ __grains__['oscodename'] }}
+----
+
+
+
+
+
+[source, YAML]
+.values.yaml
+----
+root@dontpanic:/srv/salt/saltclass/classes# tree
+.
+├── cluster
+│   └── lab
+│       └── init.yml
+├── service -> /usr/share/salt-formulas/saltclass/service
+└── system
+    ├── aodh
+    ├── apache
+    ├── aptly
+    ...
+    ...
+    ...
+----
+
+
+
+[source, YAML]
+.values.yaml
+----
+root@dontpanic:/srv/salt/saltclass/classes# cat cluster/lab/init.yml
+
+pillars:
+  linux:
+    system:
+      package:
+        vim:
+          version: latest
+----
+
+
+
+
+
+
+[source, YAML]
+.values.yaml
+----
+root@dontpanic:/usr/lib/python2.7/dist-packages/salt# /usr/bin/salt dontpanic\* state.show_states
+dontpanic:
+    - linux.system.env
+    - linux.system.profile
+    - linux.system.package
+    - linux.system.timezone
+    - linux.system.kernel
+    - linux.system.cpu
+    - linux.system.sysfs
+    - linux.system.locale
+    - linux.system.user
+    - linux.system.limit
+    - linux.system.apt
+    - linux.network.hostname
+    - linux.network.proxy
+    - salt.minion.service
+    - salt.minion.grains
+    - salt.minion.cert
+    - ntp.client
+----
+
+
+[source, YAML]
+.values.yaml
+----
+root@dontpanic:/srv/salt# /usr/bin/salt-call pillar.items __saltclass__
+local:
+    ----------
+    __saltclass__:
+        ----------
+        classes:
+            - service.linux.support
+            - service.linux.system
+            - service.salt.support
+            - service.salt.minion.master
+            - service.openssh.server
+            - system.openssh.server.single
+            - service.ntp.support
+            - service.ntp.client
+            - system.ntp.client.single
+            - system.linux.system.single
+            - system.linux.system.single.debian
+            - cluster.lab
+        environment:
+            base
+        nodename:
+            dontpanic
+        states:
+            - linux
+            - salt
+            - openssh
+            - ntp
+----
+
+
+
+[source, YAML]
+.values.yaml
+----
+root@dontpanic:/srv/salt# /usr/bin/salt-call pillar.items linux:system:user
+local:
+    ----------
+    linux:system:user:
+        ----------
+        jdoe:
+            ----------
+            email:
+                jonh@doe.com
+            enabled:
+                True
+            full_name:
+                Jonh Doe
+            home:
+                /home/jdoe
+            name:
+                jdoe
+            shell:
+                /bin/bash
+            sudo:
+                True
+        root:
+            ----------
+            enabled:
+                True
+            home:
+                /root
+            name:
+                root
+
+----
+
+
+
+
+
+
+
+[source, YAML]
+.values.yaml
+----
+root@dontpanic:/usr/lib/python2.7/dist-packages/salt# /usr/bin/salt-call state.apply linux.system.user
+local:
+----------
+          ID: system_user_jdoe
+    Function: user.present
+        Name: jdoe
+      Result: True
+     Comment: New user jdoe created
+     Started: 09:27:12.207401
+    Duration: 170.032 ms
+     Changes:
+              ----------
+              fullname:
+              gid:
+                  1000
+              groups:
+                  - jdoe
+              home:
+                  /home/jdoe
+              homephone:
+              name:
+                  jdoe
+              passwd:
+                  x
+              password:
+                  XXX-REDACTED-XXX
+              roomnumber:
+              shell:
+                  /bin/bash
+              uid:
+                  1000
+              workphone:
+----------
+          ID: system_user_home_/home/jdoe
+    Function: file.directory
+        Name: /home/jdoe
+      Result: True
+     Comment: Directory /home/jdoe updated
+     Started: 09:27:12.380480
+    Duration: 1.328 ms
+     Changes:
+              ----------
+              mode:
+                  0700
+----------
+          ID: /etc/sudoers.d/90-salt-user-jdoe
+    Function: file.managed
+      Result: True
+     Comment: File /etc/sudoers.d/90-salt-user-jdoe updated
+     Started: 09:27:12.382049
+    Duration: 403.382 ms
+     Changes:
+              ----------
+              diff:
+                  New file
+              mode:
+                  0440
+----------
+          ID: system_user_root
+    Function: user.present
+        Name: root
+      Result: True
+     Comment: User root is present and up to date
+     Started: 09:27:12.785682
+    Duration: 1.56 ms
+     Changes:
+----------
+          ID: system_user_home_/root
+    Function: file.directory
+        Name: /root
+      Result: True
+     Comment: The directory /root is in the correct state
+     Started: 09:27:12.787867
+    Duration: 0.81 ms
+     Changes:
+----------
+          ID: /etc/sudoers.d/90-salt-user-root
+    Function: file.absent
+      Result: True
+     Comment: File /etc/sudoers.d/90-salt-user-root is not present
+     Started: 09:27:12.788817
+    Duration: 0.274 ms
+     Changes:
+
+Summary for local
+------------
+Succeeded: 6 (changed=3)
+Failed:    0
+------------
+Total states run:     6
+Total run time: 577.386 ms
+----
+
+== Cons
+
+As every ext_pillar, Salt don't run it the same way as regular pillars so forget `sdb:\\`,
+`she-bang` rendering, jinja config options or any other "post-processing" salt normally do.
+Salt simply expect ext_pillars will pass already rendered dictionary :(.
+
+== Conclusion
+
+Promising "reclass compatible" alternative with important features.
+
+== Ideas
+
+* A.Komarek http_architect, similar but API driven approach
+* Devil's idea - architect + enc as salt render - passing whole SLS to Salt
+
+   Asume:
+
+     architect:
+      classes:
+       - common.linux
+       - params
+
+     linux:
+       system:
+         user:  {_param:xyz}
