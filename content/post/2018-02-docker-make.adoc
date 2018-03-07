@@ -1,0 +1,126 @@
++++
+date = "2018-03-06T15:01:07+02:00"
+draft = false
+title = "Image builds with DockerMake"
+tags = ["docker", "containers", "make", "invoke"]
++++
+//- vim: filetype=asciidoc
+
+:source-highlighter: highlight
+
+[.lead]
+Dockerfile is nice, but it’s a puppet toy when it comes to scale. I am looking for
+a solution to consistently build many docker images with shared layers and consistent and predictable build workflow.
+
+<!--more-->
+
+== TL;DR
+My use-case is simple. I want to build matrix of docker images for kitchen-salt CI, containerized
+Salt-Master and bare-bone OS boilerplates. With Salt, salt formulas installed or without it at all.
+That makes more than 60 image versions.
+
+My matrix looks like:
+
+[source, YAML]
+.invoke.yaml
+----
+matrix:
+  dist:
+    ubuntu:
+    - trusty
+    - xenial
+    - bionic
+    debian:
+    - stretch
+    centos:
+    - 7
+  salt:
+    - stable
+    - stable 2016.3
+    - stable 2017.7
+    - develop
+  salt-formulas:
+    - stable
+    - nightly
+----
+
+== Tools evaluated
+
+I did a simple search and found couple of tools that made me interested
+
+* https://github.com/avirshup/DockerMake[DockerMake] (winner)
+* https://cloud.google.com/container-builder/docs[google builder]
+* https://github.com/grammarly/rocker[Rocker]
+* https://github.com/mvanholsteijn/docker-makefile[docker-makefile]
+* https://windsock.io/automated-docker-image-builds-with-multiple-tags/
+* https://objectpartners.com/2017/09/20/docker-parameterized-builds-using-git-tags-part-1-of-2/
+* RedHat build tools
+
+== DockerMake
+
+I choosed https://github.com/avirshup/DockerMake[DockerMake] as it is:
+
+- lite
+- flexible enough
+- logic/isolated/layers
+- active in development
+
+How it works you may find out from the following snippet.
+
+[source, YAML]
+.DockerMake.yaml
+----
+    [first_image_name]:
+      FROM: [named_base_image]
+      build: |
+        RUN [something]
+        ADD [something else]
+        [Dockerfile commands go here]
+    [another_image_name]:
+     requires:
+       - [first_image_name]
+     build: |
+       [additional Dockerfile instructions]
+----
+
+For all features check `avirshup` repo or my final implementation for
+https://github.com/epcim/docker-salt-formulas/blob/master/DockerMake.yml[docker-salt-formulas].
+
+
+== Extend with "makefile" with PyInvoke
+
+DockerMake is worth to indepotently declare individual layers. However if used standalone bit fails
+to use key/args in layer, image, variable names.
+
+To solve the issue I wrote simple "makefile" specification with https://github.com/pyinvoke/invoke[PyInvoke].
+
+[]
+----
+    tasks.py     # Script to write tasks for pyinvoke
+    invoke.yaml  # Configuration file (optional)
+----
+
+Finally to build images or list individual targets I run these options:
+
+[source, BASH]
+.usage.sh
+----
+    inv --list
+    inv all --dry
+    inv all --dry-targets
+
+    # build whole matrix
+    inv all --push
+    inv all --push -w    # warnings only: to survive on errors
+
+    # individual targets
+    # invoke [target] [--[args][=value]] [--push]
+    invoke all --dry-targets --filter "{'target':'saltstack', 'salt': 'stable'}"
+    invoke build wheelhouse --require "salt salt-formulas wheel" \
+      --dist=debian --dist-rel=stretch \
+      --salt=develop --formula-rev=nightly \
+      --push
+----
+
+Good enough?
+

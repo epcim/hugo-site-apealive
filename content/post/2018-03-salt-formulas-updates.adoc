@@ -1,13 +1,20 @@
 +++
 date = "2018-03-01T12:01:07+02:00"
 draft = true
-title = "Salt-Formulas updates"
-tags = ["salt", "formulas", "salt-formulas"]
+title = "Salt Formulas and the future"
+tags = ["salt", "formulas", "salt-formulas", "saltstack"]
 +++
 
-Sum up all features on salt-formulas project.
+Recently on Slack we opened the discussion in #formulas channel about the option to merge salt-formulas to
+saltstack-formulas, gaps in general and a future roadmap.
 
+There is short summary after all that is: refresh is more than welcome and vital for all of us.
 
 <!--more-->
+
+There is many subjects today using salt and saltstack. Many various contributors, requirements etc.
+All of us do good job but as usual where is many individualist there is a deep forest full of
+branches and forks.
+
 
 # vim: filetype=markdown
