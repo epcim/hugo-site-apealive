@@ -1,0 +1,20 @@
++++
+date = "2018-03-01T12:01:07+02:00"
+draft = true
+title = "Salt-Formulas updates"
+tags = ["salt", "formulas", "salt-formulas"]
++++
+
+Sum up all features on salt-formulas project.
+
+
+### side note
+
+I also find important to share metadata structure cross tools, so transition is possible and approach
+is similar. Assume it as PEP8 or FoodCritic for your metadata. Assume it as documented API.
+
+With this motivation it would be greate set-up an upstream repo for "shared metadata" project with tools
+for it's visualization, validation, schema checks an description of it's attributes.
+<!--more-->
+
+# vim: filetype=markdown

@@ -1,0 +1,27 @@
++++
+date = "2018-04-03T17:16:07+02:00"
+draft = false
+title = "Brand new 'Salted' containers"
+tags = ["docker", "containers", "salt", "saltmaster", "validation", "reclass", "saltclass"]
++++
+//- vim: filetype=asciidoc
+
+:source-highlighter: highlight
+
+[.lead]
+
+<!--more-->
+
+== TL;DR
+
+My matrix looks like:
+
+[source, YAML]
+.invoke.yaml
+----
+----
+
+== Tools evaluated
+
+
+To solve the issue I wrote simple "makefile" specification with https://github.com/pyinvoke/invoke[PyInvoke].

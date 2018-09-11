@@ -1,3 +1,4 @@
+
 {{ partial "header" . }}
 
 <div class="container clearfix">
@@ -5,7 +6,9 @@
         <article class="post">
             <a class="btn" href="{{ .Site.BaseURL }}" title="{{ .Site.Data.l10n.article.back_to_home }}">&laquo; {{ .Site.Data.l10n.article.back_to_home }}</a>
             {{ partial "article-header" . }}
-            {{ .Content}}
+            {{- with .Content -}}
+              {{ . | replaceRE "(<h[2-9] id=\"([^\"]+)\".+)(</h[2-9]+>)" `${1}<a href="#${2}" class="hanchor" ariaLabel="Anchor"> 🔗&#xFE0E;</a> ${3}` | safeHTML }}
+            {{- end -}}
             {{if in .Params.disable "share" }}
                 <!-- share disabled -->
             {{ else }}
@@ -25,4 +28,6 @@
     {{ partial "author" . }}
 </div>
 
+
 {{ partial "footer" . }}
+

@@ -1,5 +1,5 @@
 +++
-date = "2015-11-05T10:28:19+02:00"
+date = "2018-07-05T10:28:19+02:00"
 draft = false
 title = "Who am I?"
 tags = ['profile', 'petr']
@@ -8,10 +8,9 @@ disable = ['comments']
 
 # Petr Michalec
 
-A Developer. ExIBMer. Vi(m) lover. DevOps and Opensorce devoted.
+A Developer. ExIBMer. Vi(m) lover. DevOps and OpenSource devoted.
 Performing cloud infrastructure and application architecture with passion for the edge thing.
-If you wanna reach me use Keybase, Twitter or usually an native notification on a service both of us use.
-(Don't count I read emails in {{ now.Format "2017" }})
+If you wanna reach me use Keybase, Twitter, Slack. (emails are not the best pick)
 
 ## Contact
 
@@ -28,6 +27,7 @@ Mobile number:
 ```none
     epcim(a)apealive.net
     pmichalec(a)mirantis.com
+
 ```
 
 ### Work address
@@ -37,6 +37,7 @@ Mobile number:
     Thámova 137/16
     Prague - Karlín, 18600
     Czech Republic
+
 ```
 <!--
     IBM Czech Republic
@@ -47,9 +48,13 @@ Mobile number:
 
 ## CV
 
-Practicing Developer/Architect/Tech Lead. IBM RedBook author. Certified Cloud Solution
-Architect. Wide range skills in the `uni*x` IT infrastructure, automation, deployments &
-monitoring and DevOps. Enterprise business experience since 2004. Strong skills and passion I
+Practicing Developer/Architect/Tech/Team Lead. IBM RedBook author. Certified Cloud Solution
+Architect.
+
+Wide range skills in the `uni*x`, `cloud*`, `k8s` infrastructures counting configuration management,
+CI/CD, DevOps, metric and log collection and processing.
+
+Enterprise business experience since 2004. Strong skills and passion I
 have for technological "edge" implementation, data analytics and visualization.
 I am a dedicated team player.
 
@@ -59,26 +64,24 @@ virtualisation, deployment automation, software development, testing and writing
 I have experience as team lead and architect for private cloud implementations, large scale deployments and
 daily operations for major world-wide customers.
 
-My common DevOps tool-chain and experience counts Salt, Chef, Docker, OpenStack, Kubernetes, Helm charts, Consul/Etcd, 
-Drone.io/Travis/Jenkins, KitchenCI/InSpec/Infratester, Telegraf/Fluent/Prometheus/Hubblestack.io, ...
 
 ### Key skills
 
 - Fluent English with communication and presentation skills.
-- Infrastructure and cloud architecture for private and public Openstack/Kubernetes/CloudFoundry.
-- System and infrastructure deployment for large infrastructures.
+- Infrastructure and cloud architecture for private and public Openstack/Kubernetes
+- System and infrastructure deployment for large scale infrastructures.
 - Operation support of production environments of 1k nodes.
-- Development and custom solutions for Linux and open-source solutions.
-- Programming in Python, Ruby, (C#/.NET, Java and Javascript).
+- Configuration management with Salt, Habitat, Chef, (Ansible, ...)
+- Programming in Python, Go, Ruby, (C#/.NET, Java and Javascript).
 - DevOps tool-chain for Continuous Integration / Continuous Deployment.
-- IBM SW products (DB2, ITM, BPM, TSAM, Cognos, IBM Cloud \*\*)
+- Vendor specific SW products skills (DB2, ITM, BPM, TSAM, Cognos, IBM Cloud)
 
 
 ### Career history
 
 **You wanna be listed here, make me an offer ;-)*
 
-2016/10 - <sup> to </sup><sub> date </sub> &dash; Mirantis, Czech Republic
+2016/10 - <sup> to </sup><sub> date </sub> &dash; Mirantis, Czech Republic, since 2018 team lead of a service dptm.
 
 2016/05 - 2016/10 &dash; tcp cloud, Czech Republic (Acquired by Mirantis)
 
@@ -97,19 +100,26 @@ Authors: D.Straeten, S.Hopkins, J.Huang, S.Joshi, S.Pillay, P.Michalec, S.Paul, 
 
 ### Talks
 
-* Docker meetup - Swarm (http://slides.com/petrmichalec/docker-swarm)
+* Prague, Kubernetes conference (https://slides.com/petrmichalec/k8s-datascript, /http://www.datascript.cz/kubernetes/)
+* Prague, Docker meetup - Swarm (http://slides.com/petrmichalec/docker-swarm)
 * IBM CZ, Chef DevOps Kung-fu workshop (http://slides.com/petrmichalec/epcim-devops-cult)
 * IBM PL, DevOps workshop in Warsaw
 * IBM CZ, Docker workshop in Prague
+
+Active in:
+
+* Salt community
+* Kubernetes community
+* Habitat community
 
 
 ## Personal interests
 
 * Running
 
-* Kids (two boys and a small lady)
+* Kids - two boys (2012, 2014) and a cute lady (2016)
 
-* RC Planes, Drones
+* RC Planes, FPV quadcopters
 
 * [Photography]({{< ref "photo.md" >}})
 
