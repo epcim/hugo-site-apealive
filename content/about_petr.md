@@ -1,5 +1,5 @@
 +++
-date = "2018-07-05T10:28:19+02:00"
+date = "2018-12-05T10:28:19+02:00"
 draft = false
 title = "Who am I?"
 tags = ['profile', 'petr']
@@ -8,13 +8,13 @@ disable = ['comments']
 
 # Petr Michalec
 
-A Developer. ExIBMer. Vi(m) lover. DevOps and OpenSource devoted.
+An Architect, Developer. ExIBMer. Vi(m) lover. DevOps and OpenSource devoted.
 Performing cloud infrastructure and application architecture with passion for the edge thing.
 If you wanna reach me use Keybase, Twitter, Slack. (emails are not the best pick)
 
 ## Contact
 
-<!-- for these who are used to read between lines of code ;-)
+<!-- for these who are used to read between lines (of code ;-)
 Mobile number:
     00420-734-420-347
 -->
@@ -26,20 +26,27 @@ Mobile number:
 ### Work email
 ```none
     epcim(a)apealive.net
-    pmichalec(a)mirantis.com
+    pmichalec(a)ves.io
 
 ```
 
 ### Work address
 
 ```none
+    Volterra Inc.
+    2550 Great America Way, Suite 350
+    Santa Clara, CA 95054
+    --
+    Thámova 137/16
+    Prague - Karlín, 18600
+    Czech Republic
+```
+<!--
     Mirantis Czech a.s.
     Thámova 137/16
     Prague - Karlín, 18600
     Czech Republic
-
-```
-<!--
+    --
     IBM Czech Republic
     THE PARK, V PARKU 2294/4, Building: 1480
     PRAHA , 14800
@@ -58,8 +65,8 @@ Enterprise business experience since 2004. Strong skills and passion I
 have for technological "edge" implementation, data analytics and visualization.
 I am a dedicated team player.
 
-I have hands-on experience with major relational and no-sql databases, networking,
-virtualisation, deployment automation, software development, testing and writing technical documentation.
+I have hands-on experience with major cloud solutions, deployment automation, languages, relational and no-sql databases, networking,
+virtualisation, software development, testing and writing technical documentation.
 
 I have experience as team lead and architect for private cloud implementations, large scale deployments and
 daily operations for major world-wide customers.
@@ -68,8 +75,8 @@ daily operations for major world-wide customers.
 ### Key skills
 
 - Fluent English with communication and presentation skills.
-- Infrastructure and cloud architecture for private and public Openstack/Kubernetes
-- System and infrastructure deployment for large scale infrastructures.
+- Infrastructure and cloud architecture for private and public OpenStack, Kubernetes
+- System and infrastructure deployment for complex and large scale infrastructures.
 - Operation support of production environments of 1k nodes.
 - Configuration management with Salt, Habitat, Chef, (Ansible, ...)
 - Programming in Python, Go, Ruby, (C#/.NET, Java and Javascript).
@@ -81,11 +88,13 @@ daily operations for major world-wide customers.
 
 **You wanna be listed here, make me an offer ;-)*
 
-2016/10 - <sup> to </sup><sub> date </sub> &dash; Mirantis, Czech Republic, since 2018 team lead of a service dptm.
+2018/12 - <sup> to </sup><sub> date </sub> &dash; Volterra Inc.
 
-2016/05 - 2016/10 &dash; tcp cloud, Czech Republic (Acquired by Mirantis)
+2016/11 - 2018/10 &dash; Mirantis, Czech Republic, (Architect, services team lead)
 
-2004/04 - 2016/05 &dash; IBM Czech Republic, Czech Republic
+2016/05 - 2016/10 &dash; tcp cloud, Czech Republic (Architect)
+
+2004/04 - 2016/05 &dash; IBM Czech Republic, Czech Republic (Architect, IT Specialist)
 
 2003/06 - 2003/11 &dash; Contactel s.r.o, Czech Republic
 
