@@ -1,6 +1,6 @@
 +++
 date = "2017-07-20T12:01:07+02:00"
-draft = false
+draft = true
 title = "Testing salt formulas and models with kitchen-salt"
 slug = "salt-formula-testing-kitchen-salt-1"
 tags = ["blog", "salt", "devops", "kitchen-salt", "test-kitchen", "kitchen-test", "inspec"]

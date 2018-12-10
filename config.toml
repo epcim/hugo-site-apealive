@@ -7,7 +7,6 @@ disqusShortname = "apealive"
 paginate        = 20
 canonifyurls    = true
 
-
 google_analytics = "UA-71675144-1"
 
 [params]

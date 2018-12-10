@@ -13,7 +13,10 @@ function deploy() {
   fi
 }
 
+pipenv install --skip-lock &&\
+pipenv shell
+
 rm -rf ./public
 hugo --theme=hugo-minimalist-theme &&\
-chmod o+rx -R static/* public/* && deploy
+chmod -R o+rx static/* public/* && deploy
 

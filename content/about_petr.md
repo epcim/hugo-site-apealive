@@ -40,6 +40,7 @@ Mobile number:
     Thámova 137/16
     Prague - Karlín, 18600
     Czech Republic
+
 ```
 <!--
     Mirantis Czech a.s.

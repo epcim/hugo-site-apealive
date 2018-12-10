@@ -8,8 +8,8 @@ disable = ['comments']
 +++
 
 
- Je to nějakou dobu co jsem se zaměřil na výběr aplikace co by mi opět pomohl
-zapomenout zapomínat. 
+Je to nějakou dobu co jsem se zaměřil na výběr aplikace co by mi opět pomohl
+zapomenout zapomínat.
 
 Tenhle post jsem připravil jako návod pro všechny kamarády, kdo budou mít
 zájem se do toho taky pustit.
